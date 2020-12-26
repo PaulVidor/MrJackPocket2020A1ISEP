@@ -2,6 +2,7 @@ public class District {
     private Orientation orientation;
     private Alibi character;
     private boolean isRecto;
+    private boolean isVisible;
     private boolean isJack;
     private boolean isCross;
 
@@ -9,6 +10,7 @@ public class District {
         this.orientation = orientation;
         this.character = character;
         this.isRecto = true;
+        this.isVisible = false;
         this.isJack = false;
         //à voir si vraiment utile
         this.isCross = false;
@@ -22,35 +24,17 @@ public class District {
         isJack = true;
     }
 
-    public void isCross () {
-        isCross = true;
-    }
-
     public Orientation getOrientation() {
         return orientation;
     }
 
-    public boolean isRecto() {
-        return isRecto;
+    public void isVisible () {
+        isVisible = true;
     }
 
-    public void isVerso () {
-        isRecto = false;
-    }
-
-    public String toString(String[] toPrint, Orientation orientation) {
-        int indexOfOrientation = java.util.Arrays.asList(Orientation.values()).indexOf(orientation);
-        String districtAffichage = toPrint[indexOfOrientation];
-        return districtAffichage;
-    }
-
+    // POUR TEST
     public boolean getIsJack() {
         return isJack;
-    }
-    // POUR TEST
-
-    public void setOrientation(Orientation orientation) {
-        this.orientation = orientation;
     }
 
     //POUR TEST
