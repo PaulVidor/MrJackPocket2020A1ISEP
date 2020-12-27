@@ -1,5 +1,7 @@
 import java.util.Stack;
 import java.util.Collections;
+import javax.swing.*;
+import java.awt.*;
 
     /*
          0 1 2
@@ -13,6 +15,9 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
 
+        PrincipalWindow PrincipalWindow = new PrincipalWindow();
+
+        /*
         int turnNumber = 0;
         boolean endGame = false;
         int enumSize = Alibi.values().length;
@@ -172,5 +177,10 @@ public class Main {
             VisibleCharacter(detectives[i].getPosition(), board);
         }
         IsMrJackVisible(board, endGame);
+
+
+ */
     }
+
+
 }

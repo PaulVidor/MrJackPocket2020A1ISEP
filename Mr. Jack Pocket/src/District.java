@@ -1,4 +1,7 @@
-public class District {
+import javax.swing.*;
+import java.awt.*;
+
+public class District extends JComponent {
     private Orientation orientation;
     private Alibi character;
     private boolean isRecto;
@@ -54,4 +57,6 @@ public class District {
     }
 
     //POUR TEST
+
+
 }
