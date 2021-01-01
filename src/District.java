@@ -1,7 +1,8 @@
 public class District {
     private Orientation orientation;
-    private Alibi character;
+    private final Alibi character;
     private boolean isRecto;
+    private boolean isInSight;
     private boolean isJack;
     private boolean isCross;
 
@@ -9,6 +10,7 @@ public class District {
         this.orientation = orientation;
         this.character = character;
         this.isRecto = true;
+        this.isInSight = false;
         this.isJack = false;
         this.isCross = false;
     }
@@ -33,8 +35,16 @@ public class District {
         return isRecto;
     }
 
-    public void isVerso () {
+    public void setVerso() {
         isRecto = false;
+    }
+
+    public void setInSight(boolean inSight) {
+        isInSight = inSight;
+    }
+
+    public boolean isInSight() {
+        return isInSight;
     }
 
     public String toString(String[] toPrint, Orientation orientation) {

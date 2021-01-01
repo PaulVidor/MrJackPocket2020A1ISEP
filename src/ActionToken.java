@@ -1,25 +1,23 @@
 public enum ActionToken {
-    JETON1,
-    JETON2,
-    JETON3,
-    JETON4;
+    JETON1("Piocher un alibi", "Deplacer Sherlock"),
+    JETON2("Deplacer Tobby", "Deplacer Watson"),
+    JETON3("Faire tourner un quartier", "Echanger deux quartiers"),
+    JETON4("Faire tourner un quartier", "Deplacer les trois detectives");
 
     private boolean isHead;
-    private boolean isHoldByInvestigator;
     private boolean hasBeenUsed;
+    private String nameHead;
+    private String nameTails;
 
-    ActionToken() {
+    ActionToken(String nameHead, String nameTails) {
         this.isHead = true;
-        this.isHoldByInvestigator = true;
         this.hasBeenUsed = false;
+        this.nameHead = nameHead;
+        this.nameTails = nameTails;
     }
 
     public boolean isHead() {
         return isHead;
-    }
-
-    public boolean isHoldByInvestigator() {
-        return isHoldByInvestigator;
     }
 
     public boolean isHasBeenUsed() {
@@ -30,11 +28,16 @@ public enum ActionToken {
         isHead = head;
     }
 
-    public void setHoldByInvestigator(boolean holdByInvestigator) {
-        isHoldByInvestigator = holdByInvestigator;
-    }
-
     public void setHasBeenUsed(boolean hasBeenUsed) {
         this.hasBeenUsed = hasBeenUsed;
+    }
+
+    public String toString() {
+        if (isHead) {
+            return nameHead;
+        }
+        else {
+            return nameTails;
+        }
     }
 }
