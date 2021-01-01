@@ -5,6 +5,7 @@ public class District {
     private boolean isInSight;
     private boolean isJack;
     private boolean isCross;
+    private boolean hasBeenRotate;
 
     public District(Orientation orientation, Alibi character) {
         this.orientation = orientation;
@@ -13,6 +14,7 @@ public class District {
         this.isInSight = false;
         this.isJack = false;
         this.isCross = false;
+        this.hasBeenRotate = false;
     }
 
     public Alibi getCharacter() {
@@ -25,6 +27,10 @@ public class District {
 
     public void isCross () {
         isCross = true;
+    }
+
+    public boolean getIsCross() {
+        return isCross;
     }
 
     public Orientation getOrientation() {
@@ -46,6 +52,15 @@ public class District {
     public boolean isInSight() {
         return isInSight;
     }
+
+    public boolean isHasBeenRotate() {
+        return hasBeenRotate;
+    }
+
+    public void setHasBeenRotate() {
+        this.hasBeenRotate = true;
+    }
+
 
     public String toString(String[] toPrint, Orientation orientation) {
         int indexOfOrientation = java.util.Arrays.asList(Orientation.values()).indexOf(orientation);

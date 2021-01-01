@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -19,14 +20,16 @@ public class Board {
     private ActionToken[] listOfTokens;
     private String[] districtToPrint;
     private int turnNumber;
-    private Alibi mrJackCharacter;
     private boolean endGame;
     private boolean investigatorStarts;
     private boolean investigatorHasHand;
     private boolean endActions;
     private int numberOfActionsUsed;
+    private Alibi mrJackCharacter;
     private District mrJackDistrict;
-    private District crossDistrict;
+    private int numberOfDistrictVerso;
+    private InvestigatorPlayer investigatorPlayer;
+    private MrJackPlayer mrJackPlayer;
 
     public Board() {
         this.generate();
@@ -37,13 +40,15 @@ public class Board {
         board = new District[3][3];
         listOfDetectives = Detective.values();
         listOfTokens = ActionToken.values();
-        districtToPrint = new String[] {"╦","╣","╩","╠"};
+        districtToPrint = new String[] {"╦","╣","╩","╠","╬"};
         turnNumber = 1;
         numberOfActionsUsed = 0;
+        numberOfDistrictVerso = 0;
         investigatorStarts = true;
 
         deckGenerate();
         mrJackCharacterGenerate();
+        playersGenerate();
         districtBoardGenerate();
         shuffleTokens();
     }
@@ -63,6 +68,15 @@ public class Board {
         Collections.shuffle(alibiCards);
     }
 
+    public void playersGenerate() {
+        System.out.println("Quel est le nom du joueur enqueteur ?");
+        String userName = Game.scan.nextLine();
+        investigatorPlayer = new InvestigatorPlayer(new ArrayList(), 0, userName);
+        System.out.println("Quel est le nom du joueur MrJack ?");
+        userName = Game.scan.nextLine();
+        mrJackPlayer = new MrJackPlayer(new ArrayList(), 0, userName, mrJackCharacter);
+    }
+
     public void districtBoardGenerate() {
         for (int i = 0; i<3; i++) {
             for (int j = 0; j<3; j++) {
@@ -72,7 +86,7 @@ public class Board {
                     mrJackDistrict = board[i][j];
                 }
                 if (board[i][j].getCharacter() == Alibi.BROWN) {
-                    crossDistrict = board[i][j];
+                    board[i][j].isCross();
                 }
             }
         }
@@ -92,20 +106,40 @@ public class Board {
     // Fonctions actions
 
     public void shuffleTokens() {
-        for (int i = 0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             listOfTokens[i].setHasBeenUsed(false);
-            if ((int) (Math.random() * 2) < 0.5) {
-                listOfTokens[i].setHead(false);
+        }
+        for (int j = 0; j < 4; j++) {
+            if (investigatorStarts) {
+                if ((int) (Math.random() * 2) < 0.5) {
+                    listOfTokens[j].setHead(false);
+                }
+            }
+            else {
+                listOfTokens[j].setHead(!listOfTokens[j].isHead());
             }
         }
     }
 
     public void alibiDraw() {
-        if (alibiCards.empty()) {
-            System.out.println("Il n'y a plus de cartes Alibi !");
+        Alibi alibiCardDrawed;
+        alibiCardDrawed = alibiCards.pop();
+        System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
+        System.out.println(investigatorPlays());
+        if (investigatorPlays()) {
+            investigatorPlayer.addToAlibiCards(alibiCardDrawed);
+            investigatorPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
+            for (int i = 0; i<3; i++) {
+                for (int j = 0; j<3; j++) {
+                    if (board[i][j].getCharacter() == alibiCardDrawed) {
+                        board[i][j].setVerso();
+                    }
+                }
+            }
         }
         else {
-            System.out.println("L'alibi obtenu est : " + alibiCards.pop().getName());
+            mrJackPlayer.addToAlibiCards(alibiCardDrawed);
+            mrJackPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
         }
     }
 
@@ -134,7 +168,15 @@ public class Board {
         int positionRow = (districtPosition-1)/3;
         int positionColumn = (districtPosition-1)%3;
         District district = board[positionRow][positionColumn];
-        district.setOrientation(Orientation.values()[(district.getOrientation().ordinal()+times)%4]);
+
+        if (district.isHasBeenRotate()) {
+            System.out.println("Ce quartier a deja ete tourne, choisissez en un autre\n");
+            rotate();
+        }
+        else {
+            district.setOrientation(Orientation.values()[(district.getOrientation().ordinal()+times)%4]);
+            district.setHasBeenRotate();
+        }
     }
 
     public void swapDistricts () {
@@ -245,6 +287,9 @@ public class Board {
                     for (int i = 0; i < 3; i++) {
                         if (board[i][detectivePosition].getOrientation() != Orientation.NORTH) {
                             board[i][detectivePosition].setInSight(true);
+                            if (board[i][detectivePosition].getOrientation() == Orientation.SOUTH) {
+                                break;
+                            }
                         }
                         else {
                             break;
@@ -256,9 +301,12 @@ public class Board {
                 case 7:
                 case 8:
                     int correspondColumn = (detectivePosition % 6 - 2) * (-1);
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 2; i >= 0; i--) {
                         if (board[i][correspondColumn].getOrientation() != Orientation.SOUTH) {
                             board[i][correspondColumn].setInSight(true);
+                            if (board[i][correspondColumn].getOrientation() == Orientation.NORTH) {
+                                break;
+                            }
                         }
                         else {
                             break;
@@ -273,6 +321,9 @@ public class Board {
                     for (int i = 2; i >= 0; i--) {
                         if (board[correspondRowRight][i].getOrientation() != Orientation.EAST) {
                             board[correspondRowRight][i].setInSight(true);
+                            if (board[correspondRowRight][i].getOrientation() == Orientation.WEST) {
+                                break;
+                            }
                         }
                         else {
                             break;
@@ -287,6 +338,9 @@ public class Board {
                     for (int i = 0; i < 3; i++) {
                         if (board[correspondRowLeft][i].getOrientation() != Orientation.WEST) {
                             board[correspondRowLeft][i].setInSight(true);
+                            if (board[correspondRowLeft][i].getOrientation() == Orientation.EAST) {
+                                break;
+                            }
                         }
                         else {
                             break;
@@ -300,26 +354,37 @@ public class Board {
         }
     }
 
-    public boolean isMrJackCaught() {
+    public void makeDistrictsVerso() {
         if (mrJackDistrict.isInSight()) {
-            for (int i = 0; i<3; i++) {
-                for (int j = 0; j<3; j++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                     if (!board[i][j].isInSight()) {
                         board[i][j].setVerso();
                     }
                 }
             }
         }
-        if (!mrJackDistrict.isInSight()) {
-            for (int i = 0; i<3; i++) {
-                for (int j = 0; j<3; j++) {
+        else {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                     if (board[i][j].isInSight()) {
                         board[i][j].setVerso();
                     }
                 }
             }
         }
-        if (!mrJackDistrict.isRecto()) {
+    }
+
+    public boolean isMrJackCaught() {
+        for (int i = 0; i<3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (!board[i][j].isRecto()) {
+                    numberOfDistrictVerso++;
+                }
+            }
+        }
+        System.out.println(numberOfDistrictVerso);
+        if (numberOfDistrictVerso==8) {
             endGame=true;
         }
         return endGame;
@@ -328,12 +393,12 @@ public class Board {
     // Fin de tour
 
     public void endTurn() {
-        for (int i = 0; i<listOfDetectives.length; i++) {
-            visibleCharacters();
-        }
+        visibleCharacters();
+        makeDistrictsVerso();
         isMrJackCaught();
         turnNumber++;
         numberOfActionsUsed=0;
+        numberOfDistrictVerso=0;
         changeHand();
         shuffleTokens();
         for (int i = 0; i<3; i++) {
@@ -357,7 +422,7 @@ public class Board {
     }
 
     public boolean investigatorPlays() {
-        if ((investigatorStarts && numberOfActionsUsed == 3) || (!investigatorStarts && (numberOfActionsUsed == 1 || numberOfActionsUsed == 2))) {
+        if ((investigatorStarts && (numberOfActionsUsed == 0 || numberOfActionsUsed == 3)) || (!investigatorStarts && (numberOfActionsUsed == 1 || numberOfActionsUsed == 2))) {
             investigatorHasHand = true;
         }
 
@@ -382,13 +447,16 @@ public class Board {
         for (int i = 0; i<3; i++) {
             System.out.print(12-i + " ");
             for (int j = 0; j < 3; j++) {
+                if(board[i][j].getIsCross() && !board[i][j].isRecto()) {
+                    board[i][j].setOrientation(Orientation.CROSS);
+                }
                 System.out.print(board[i][j].toString(districtToPrint, board[i][j].getOrientation()));
-                if (!board[i][j].isRecto()) {
-                    System.out.print("      ");
+                if (board[i][j].isRecto()) {
+                    System.out.print("(" + board[i][j].getCharacter().toString().charAt(0)
+                            + board[i][j].getCharacter().toString().charAt(1) + board[i][j].getCharacter().toString().charAt(2) + ") ");
                 }
                 else {
-                    System.out.print("(" + board[i][j].getCharacter().toString().charAt(0)
-                    + board[i][j].getCharacter().toString().charAt(1) + board[i][j].getCharacter().toString().charAt(2) + ") ");
+                    System.out.print("      ");
                 }
             }
             System.out.println(i+4);
@@ -414,9 +482,13 @@ public class Board {
         }
     }
 
+    /*public MrJackPlayer getMrJackPlayer() {
+        return mrJackPlayer;
+    }*/
+
     public String getMrJackCharacter() {
         return mrJackCharacter.getName() + " (" + mrJackCharacter.toString().charAt(0)
-        + mrJackCharacter.toString().charAt(1) + mrJackCharacter.toString().charAt(2) + ")";
+                + mrJackCharacter.toString().charAt(1) + mrJackCharacter.toString().charAt(2) + ")";
     }
 
     //TEST
@@ -425,7 +497,7 @@ public class Board {
         return mrJackDistrict;
     }
 
-    public District[][] getBoard() {
-        return board;
+    public int getNumberOfDistrictVerso() {
+        return numberOfDistrictVerso;
     }
 }

@@ -11,6 +11,7 @@ public enum Alibi {
 
     private String name;
     private int hourglass;
+    private District district;
 
     Alibi(String name, int hourglass) {
         this.name = name;
@@ -23,5 +24,12 @@ public enum Alibi {
 
     public String getName() {
         return name;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+    public void setDistrict(District district) {
+        this.district = district;
     }
 }
