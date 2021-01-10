@@ -22,7 +22,6 @@ public class Board {
     private int turnNumber;
     private boolean endGame;
     private boolean investigatorStarts;
-    private boolean investigatorHasHand;
     private boolean endActions;
     private int numberOfActionsUsed;
     private Alibi mrJackCharacter;
@@ -90,6 +89,9 @@ public class Board {
                 }
             }
         }
+        board[0][0].setOrientation(Orientation.WEST);
+        board[0][2].setOrientation(Orientation.EAST);
+        board[2][1].setOrientation(Orientation.SOUTH);
         alibiCards.remove(mrJackCharacter);
     }
 
@@ -144,17 +146,26 @@ public class Board {
     }
 
     public void moveDetective(Detective detective) {
-        System.out.println("De combien ce cases souhaitez-vous le faire avancer ?");
+        System.out.println("De combien ce cases souhaitez-vous le faire avancer (1 ou 2) ?");
         int distance = Game.scan.nextInt();
-        detective.setPosition((detective.getPosition()+distance)%12);
+        if (distance == 1 || distance == 2) {
+            detective.setPosition((detective.getPosition() + distance) % 12);
+        }
+        else {
+            System.out.println("La demande n'est pas valide, veuillez reessayer");
+            moveDetective(detective);
+        }
     }
 
     public void moveDetectivesTogether() {
-        System.out.println("Voulez-vous deplacer les 3 detectives (1) ou les laisser en place (0) ?");
-        int distance = Game.scan.nextInt();
-        if (distance == 1) {
+        //JEN SUIS A LA
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Choisissez un detective");
+        int userChoice = Game.scan.nextInt();
+        if (userChoice == 1) {
             for (int i = 0; i<3; i++) {
-                listOfDetectives[i].setPosition((listOfDetectives[i].getPosition()+distance)%12);
+                listOfDetectives[i].setPosition((listOfDetectives[i].getPosition()+ userChoice)%12);
             }
         }
     }
@@ -422,15 +433,7 @@ public class Board {
     }
 
     public boolean investigatorPlays() {
-        if ((investigatorStarts && (numberOfActionsUsed == 0 || numberOfActionsUsed == 3)) || (!investigatorStarts && (numberOfActionsUsed == 1 || numberOfActionsUsed == 2))) {
-            investigatorHasHand = true;
-        }
-
-        else {
-            investigatorHasHand = false;
-        }
-
-        return investigatorHasHand;
+        return ((investigatorStarts && (numberOfActionsUsed == 0 || numberOfActionsUsed == 3)) || (!investigatorStarts && (numberOfActionsUsed == 1 || numberOfActionsUsed == 2)));
     }
 
     public boolean getInvestigatorStarts() {
