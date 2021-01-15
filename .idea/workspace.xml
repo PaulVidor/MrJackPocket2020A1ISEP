@@ -1,14 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7150fde4-8ac0-4d22-912f-5be26c478f42" name="Default Changelist" comment="">
+    <list default="true" id="7150fde4-8ac0-4d22-912f-5be26c478f42" name="Default Changelist" comment="Big Refactoring">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActionToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CSSButtom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InvestigatorPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MrJackPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pictures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vidorpaul/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vidorpaul/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vidorpaul/src/Alibi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vidorpaul/src/Detective.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vidorpaul/src/District.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vidorpaul/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vidorpaul/src/Orientation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/Mr. Jack Pocket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/ActionToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/Alibi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/Detective.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/Detectives.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/District.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/MrJackPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/Orientation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/out/production/Mr. Jack Pocket/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/ActionToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Alibi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Alibi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Detective.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Detective.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Detectives.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/District.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/District.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Mr. Jack Pocket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/MrJackPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Orientation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Orientation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton1-Face1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton1-Face1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton1-Face2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton1-Face2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton2-Face1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton2-Face1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton2-Face2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton2-Face2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton3-Face1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton3-Face1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton3-Face2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton3-Face2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton4-Face1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton4-Face1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/actions/Jeton4-Face2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/actions/Jeton4-Face2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/InspLestrade-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/InspLestrade-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/JeremyBert-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/JeremyBert-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/JohnPizer-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/JohnPizer-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/JohnSmith-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/JohnSmith-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/JosephLane-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/JosephLane-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/Madame-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/Madame-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/MissStealthy-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/MissStealthy-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/SgtGoodley-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/SgtGoodley-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/WilliamGull-alibi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/WilliamGull-alibi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/alibis/alibi-card.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/alibis/alibi-card.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/detectives/Sherlock.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/detectives/Sherlock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/detectives/Tobi.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/detectives/Tobi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/detectives/Watson.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/detectives/Watson.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/InspLestrade-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/InspLestrade-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/JeremyBert-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/JeremyBert-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/JohnPizer-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/JohnPizer-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/JohnSmith-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/JohnSmith-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/JosephLane-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/JosephLane-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/JosephLane-verso.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/JosephLane-verso.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/Madame-rector.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/Madame-rector.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/MissStealthy-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/MissStealthy-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/SgtGoodley-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/SgtGoodley-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/WilliamGull-recto.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/WilliamGull-recto.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Pictures/districts/common-verso.png" beforeDir="false" afterPath="$PROJECT_DIR$/Pictures/districts/common-verso.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Plateau.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/PrincipalWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/ActionToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Alibi.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Detective.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Detectives.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/District.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Mr. Jack Pocket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/MrJackPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Orientation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton1-Face1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton1-Face2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton2-Face1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton2-Face2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton3-Face1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton3-Face2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton4-Face1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/actions/Jeton4-Face2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/InspLestrade-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/JeremyBert-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/JohnPizer-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/JohnSmith-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/JosephLane-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/Madame-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/MissStealthy-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/SgtGoodley-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/WilliamGull-alibi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/alibis/alibi-card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/detectives/Sherlock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/detectives/Tobi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/detectives/Watson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/InspLestrade-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/JeremyBert-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/JohnPizer-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/JohnSmith-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/JosephLane-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/JosephLane-verso.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/Madame-rector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/MissStealthy-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/SgtGoodley-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/WilliamGull-recto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Pictures/districts/common-verso.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Plateau.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mr. Jack Pocket/src/out/production/Mr. Jack Pocket/PrincipalWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJackPocket2020A1ISEP.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +136,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1lVEMYnUJiEx0jFOh4QLoxgakBp" />
   <component name="ProjectViewState">
@@ -26,7 +146,19 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Mr. Jack Pocket/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\paulv\MrJackPocket2020A1ISEP" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\paulv\MrJackPocket2020A1ISEP\src" />
+      <recent name="C:\Users\paulv\MrJackPocket2020A1ISEP" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -39,13 +171,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -63,13 +197,26 @@
       <workItem from="1608994121521" duration="168000" />
       <workItem from="1608994581770" duration="34000" />
       <workItem from="1608994634316" duration="32000" />
+      <workItem from="1610697576528" duration="756000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Big Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Big Refactoring" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1610697866135">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1610697866135" />
+    <state x="325" y="0" key="CommitChangelistDialog2" timestamp="1610698099876">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="325" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1610698099876" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1608994288084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -90,5 +237,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608994110324" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610697595508">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1610697595508" />
   </component>
 </project>
