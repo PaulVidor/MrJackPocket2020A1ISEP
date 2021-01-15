@@ -1,3 +1,5 @@
+package com.thipasa.mrjack.model;
+
 public class District {
     private Orientation orientation;
     private final Alibi character;

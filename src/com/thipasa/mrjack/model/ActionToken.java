@@ -1,3 +1,5 @@
+package com.thipasa.mrjack.model;
+
 public enum ActionToken {
     JETON1("Piocher un alibi", "Deplacer Sherlock"),
     JETON2("Deplacer Tobby", "Deplacer Watson"),

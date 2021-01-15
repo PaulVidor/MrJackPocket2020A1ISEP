@@ -1,3 +1,7 @@
+package com.thipasa.mrjack.game;
+
+import com.thipasa.mrjack.model.Board;
+
 import java.util.Scanner;
 
 public class Game {

@@ -1,3 +1,5 @@
+package com.thipasa.mrjack.players;
+
 public enum Detective {
     WATSON("Watson", 3),
     SHERLOCK("Sherlock", 11),

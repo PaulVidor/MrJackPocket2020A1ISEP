@@ -1,3 +1,7 @@
+package com.thipasa.mrjack.players;
+
+import com.thipasa.mrjack.model.Alibi;
+
 import java.util.ArrayList;
 
 public abstract class Player {

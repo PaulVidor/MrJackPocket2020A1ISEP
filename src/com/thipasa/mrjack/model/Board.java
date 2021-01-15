@@ -1,3 +1,10 @@
+package com.thipasa.mrjack.model;
+
+import com.thipasa.mrjack.game.Game;
+import com.thipasa.mrjack.players.Detective;
+import com.thipasa.mrjack.players.InvestigatorPlayer;
+import com.thipasa.mrjack.players.MrJackPlayer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;

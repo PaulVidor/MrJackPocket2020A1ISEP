@@ -1,3 +1,5 @@
+package com.thipasa.mrjack.model;
+
 public enum Alibi {
     PINK("Madame",2),
     BLACK("Sgt Goodley",0),

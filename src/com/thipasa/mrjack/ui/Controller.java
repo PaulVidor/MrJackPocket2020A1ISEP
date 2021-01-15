@@ -1,3 +1,6 @@
+package com.thipasa.mrjack.ui;
+
+import com.thipasa.mrjack.model.Board;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
