@@ -102,6 +102,10 @@ public class Board {
         alibiCards.remove(mrJackCharacter);
     }
 
+    public District getDistrict(int i, int j) {
+        return this.board[i][j];
+    }
+
     public boolean actionsAllUsed() {
         endActions = true;
         for (int i = 0; i < 4; i++) {
@@ -162,9 +166,6 @@ public class Board {
     }
 
     public void moveDetectivesTogether() {
-        //JEN SUIS A LA
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         System.out.println("Choisissez un detective");
         int userChoice = Game.scan.nextInt();
         if (userChoice == 1) {

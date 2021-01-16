@@ -204,10 +204,23 @@ public class Controller implements Initializable {
         this.button11.getStyleClass().add("Sherlock1");
 
 
-
         //-------------------------------------------------------------------------------------------------------
 
         //this.buttom0.setStyle("-fx-background: url('../Pictures/districts/common-verso.png');");
+
+        Board myBoard = new Board();
+
+        this.button01.getStyleClass().add(myBoard.getDistrict(0, 0).getCharacter().getName());
+        this.button02.getStyleClass().add(myBoard.getDistrict(0, 1).getCharacter().getName());
+        this.button03.getStyleClass().add(myBoard.getDistrict(0, 2).getCharacter().getName());
+        this.button04.getStyleClass().add(myBoard.getDistrict(1, 0).getCharacter().getName());
+        this.button05.getStyleClass().add(myBoard.getDistrict(1, 1).getCharacter().getName());
+        this.button06.getStyleClass().add(myBoard.getDistrict(1, 2).getCharacter().getName());
+        this.button07.getStyleClass().add(myBoard.getDistrict(2, 0).getCharacter().getName());
+        this.button08.getStyleClass().add(myBoard.getDistrict(2, 1).getCharacter().getName());
+        this.button09.getStyleClass().add(myBoard.getDistrict(2, 2).getCharacter().getName());
+
+
     }
 
     public void pushed(ActionEvent e) {

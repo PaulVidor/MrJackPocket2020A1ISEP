@@ -26,81 +26,81 @@
     background-repeat: no-repeat;
 }
 
-.PINK {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Madame {
+    -fx-background-image: url('pictures/districts/Madame-rector.png');
+    background-image: url('pictures/districts/Madame-rector.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.BLACK {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Goodley {
+    -fx-background-image: url('pictures/districts/SgtGoodley-recto.png');
+    background-image: url('pictures/districts/SgtGoodley-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.ORANGE {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Bert {
+    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
+    background-image: url('pictures/districts/JeremyBert-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.VIOLET {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Gull {
+    -fx-background-image: url('pictures/districts/WilliamGull-recto.png');
+    background-image: url('pictures/districts/WilliamGull-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.GREEN {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Stealthy {
+    -fx-background-image: url('pictures/districts/MissStealthy-recto.png');
+    background-image: url('pictures/districts/MissStealthy-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.YELLOW {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Smith {
+    -fx-background-image: url('pictures/districts/JohnSmith-recto.png');
+    background-image: url('pictures/districts/JohnSmith-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.BLUE {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Lestrade {
+    -fx-background-image: url('pictures/districts/InspLestrade-recto.png');
+    background-image: url('pictures/districts/InspLestrade-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.WHITE {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Pizer {
+    -fx-background-image: url('pictures/districts/JohnPizer-recto.png');
+    background-image: url('pictures/districts/JohnPizer-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.BROWN {
-    -fx-background-image: url('pictures/detectives/Sherlock.png');
-    background-image: url('pictures/detectives/Sherlock.png');
+.Lane{
+    -fx-background-image: url('pictures/districts/JosephLane-recto.png');
+    background-image: url('pictures/districts/JosephLane-recto.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;

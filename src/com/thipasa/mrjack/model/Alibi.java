@@ -2,14 +2,14 @@ package com.thipasa.mrjack.model;
 
 public enum Alibi {
     PINK("Madame", 2),
-    BLACK("Sgt Goodley", 0),
-    ORANGE("Jeremy Bert", 1),
-    VIOLET("William Gull", 1),
-    GREEN("Miss Stealthy", 1),
-    YELLOW("Jhon Smith", 1),
-    BLUE("Insp. Lestrade", 0),
-    WHITE("John Pizer", 1),
-    BROWN("Joseph Lane", 1);
+    BLACK("Goodley", 0),
+    ORANGE("Bert", 1),
+    VIOLET("Gull", 1),
+    GREEN("Stealthy", 1),
+    YELLOW("Smith", 1),
+    BLUE("Lestrade", 0),
+    WHITE("Pizer", 1),
+    BROWN("Lane", 1);
 
 
     private String name;
