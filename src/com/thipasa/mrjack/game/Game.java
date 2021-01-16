@@ -25,7 +25,7 @@ public class Game {
         System.out.println("\nLa partie commence !\n");
         System.out.println("Le personnage " + board.getMrJackCharacter() + " est Mr. Jack !\n");
 
-        while(!board.isEndGame()) {
+        while (!board.isEndGame()) {
             System.out.println("\n------ Nous sommes au tour numero " + board.getTurnNumber() + " ------");
             board.gameToPrint();
             System.out.println();
@@ -34,7 +34,7 @@ public class Game {
             board.chooseActions(userChoice);
             board.gameToPrint();
 
-            while(!board.actionsAllUsed()) {
+            while (!board.actionsAllUsed()) {
                 System.out.println("\nC'est au tour de " + (board.investigatorPlays() ? "l'enqueteur" : "Mr. Jack") + " de choisir une action");
                 userChoice = Game.scan.nextInt();
                 board.chooseActions(userChoice);

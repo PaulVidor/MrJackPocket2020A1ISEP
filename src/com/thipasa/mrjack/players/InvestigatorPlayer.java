@@ -4,7 +4,7 @@ import com.thipasa.mrjack.model.Alibi;
 
 import java.util.ArrayList;
 
-public class InvestigatorPlayer extends Player{
+public class InvestigatorPlayer extends Player {
 
     public InvestigatorPlayer(ArrayList<Alibi> alibiCards, int countHourglass, String name) {
         super(alibiCards, countHourglass, name);
@@ -14,6 +14,7 @@ public class InvestigatorPlayer extends Player{
     public ArrayList getAlibiCards() {
         return super.getAlibiCards();
     }
+
     @Override
     public void addToAlibiCards(Alibi alibiCard) {
         super.addToAlibiCards(alibiCard);
