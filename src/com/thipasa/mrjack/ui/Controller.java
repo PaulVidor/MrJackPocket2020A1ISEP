@@ -64,18 +64,6 @@ public class Controller implements Initializable {
     public Button button09_270;
     @FXML
 
-    public Button[][] degButton = {
-            {button01, button01_90, button01_180, button01_270},
-            {button02, button02_90, button02_180, button02_270},
-            {button03, button03_90, button03_180, button03_270},
-            {button04, button04_90, button04_180, button04_270},
-            {button05, button05_90, button05_180, button05_270},
-            {button06, button06_90, button06_180, button06_270},
-            {button07, button07_90, button07_180, button07_270},
-            {button08, button08_90, button08_180, button08_270},
-            {button09, button09_90, button09_180, button09_270}
-    };
-
     //Boutton pour les différents détectives
     public Button button0;
     @FXML
@@ -100,6 +88,8 @@ public class Controller implements Initializable {
     public Button button10;
     @FXML
     public Button button11;
+    @FXML
+    public Button buttonAfficher;
 
     //Information pour leurs positionnement
 
@@ -202,6 +192,9 @@ public class Controller implements Initializable {
         this.button11.setDisable(true);
         //this.buttom11.getStyleClass().removeAll("nom de la classe");
         this.button11.getStyleClass().add("Sherlock1");
+
+        this.buttonAfficher.setDisable(false);
+        this.buttonAfficher.getStyleClass().add("Tour1");
 
 
         //-------------------------------------------------------------------------------------------------------

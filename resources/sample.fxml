@@ -53,5 +53,19 @@
              <Button fx:id="button8" layoutX="210.0" layoutY="310.0" mnemonicParsing="false" onAction="#pushed" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="buttonAfficher" mnemonicParsing="false" onAction="#pushed" prefHeight="100.0" prefWidth="100.0" />
+         </children>
+      </GridPane>
    </children>
 </GridPane>

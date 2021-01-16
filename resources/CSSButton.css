@@ -107,3 +107,12 @@
     background-repeat: no-repeat;
 }
 
+.Tour1{
+    -fx-background-image: url('pictures/tours/tour1.PNG');
+    background-image: url('pictures/tours/tour1.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
