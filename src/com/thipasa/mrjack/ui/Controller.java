@@ -113,39 +113,30 @@ public class Controller implements Initializable {
 
         this.button01.setDisable(true);
         //this.buttom01.getStyleClass().removeAll("nom de la classe");
-        this.button01.getStyleClass().add("Alibi0");
 
         this.button02.setDisable(true);
         //this.buttom02.getStyleClass().removeAll("nom de la classe");
-        this.button02.getStyleClass().add("Alibi");
 
         this.button03.setDisable(true);
         //this.buttom03.getStyleClass().removeAll("nom de la classe");
-        this.button03.getStyleClass().add("Alibi");
 
         this.button04.setDisable(true);
         //this.buttom04.getStyleClass().removeAll("nom de la classe");
-        this.button04.getStyleClass().add("Alibi");
 
         this.button05.setDisable(true);
         //this.buttom05.getStyleClass().removeAll("nom de la classe");
-        this.button05.getStyleClass().add("Alibi");
 
         this.button06.setDisable(true);
         //this.buttom06.getStyleClass().removeAll("nom de la classe");
-        this.button06.getStyleClass().add("Alibi");
 
         this.button07.setDisable(true);
         //this.buttom07.getStyleClass().removeAll("nom de la classe");
-        this.button07.getStyleClass().add("Alibi");
 
         this.button08.setDisable(true);
         //this.buttom08.getStyleClass().removeAll("nom de la classe");
-        this.button08.getStyleClass().add("Alibi");
 
         this.button09.setDisable(true);
         //this.buttom09.getStyleClass().removeAll("nom de la classe");
-        this.button09.getStyleClass().add("Alibi");
 
         //-------------------------------------------------------------
 
@@ -229,7 +220,9 @@ public class Controller implements Initializable {
         this.button09.getStyleClass().add(myBoard.getDistrict(2, 2).getCharacter().getName());
         this.button09.setRotate(convertRotate(myBoard.getDistrict(2,2).getOrientation()));
 
+
         //-------------------------------------------------------------------------------------------------------
+
 
     }
 
