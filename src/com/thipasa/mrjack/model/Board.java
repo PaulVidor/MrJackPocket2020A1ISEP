@@ -103,6 +103,7 @@ public class Board {
     }
 
     public District getDistrict(int i, int j) {
+
         return this.board[i][j];
     }
 

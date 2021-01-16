@@ -2,6 +2,8 @@ package com.thipasa.mrjack.ui;
 
 import com.thipasa.mrjack.model.Alibi;
 import com.thipasa.mrjack.model.Board;
+import com.thipasa.mrjack.model.District;
+import com.thipasa.mrjack.model.Orientation;
 import com.thipasa.mrjack.players.Detective;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
+    private District[][] boardverif;
 
     //Button pour les différents districts
     @FXML
@@ -203,17 +207,46 @@ public class Controller implements Initializable {
 
         Board myBoard = new Board();
 
+        boardverif = new District[1][1];
+
+        //myBoard.getDistrict(0,0)
         this.button01.getStyleClass().add(myBoard.getDistrict(0, 0).getCharacter().getName());
+        this.button01.setRotate(convertRotate(myBoard.getDistrict(0,0).getOrientation()));
         this.button02.getStyleClass().add(myBoard.getDistrict(0, 1).getCharacter().getName());
+        this.button02.setRotate(convertRotate(myBoard.getDistrict(0,1).getOrientation()));
         this.button03.getStyleClass().add(myBoard.getDistrict(0, 2).getCharacter().getName());
+        this.button03.setRotate(convertRotate(myBoard.getDistrict(0,2).getOrientation()));
         this.button04.getStyleClass().add(myBoard.getDistrict(1, 0).getCharacter().getName());
+        this.button04.setRotate(convertRotate(myBoard.getDistrict(1,0).getOrientation()));
         this.button05.getStyleClass().add(myBoard.getDistrict(1, 1).getCharacter().getName());
+        this.button05.setRotate(convertRotate(myBoard.getDistrict(1,1).getOrientation()));
         this.button06.getStyleClass().add(myBoard.getDistrict(1, 2).getCharacter().getName());
+        this.button06.setRotate(convertRotate(myBoard.getDistrict(1,2).getOrientation()));
         this.button07.getStyleClass().add(myBoard.getDistrict(2, 0).getCharacter().getName());
+        this.button07.setRotate(convertRotate(myBoard.getDistrict(2,0).getOrientation()));
         this.button08.getStyleClass().add(myBoard.getDistrict(2, 1).getCharacter().getName());
+        this.button08.setRotate(convertRotate(myBoard.getDistrict(2,1).getOrientation()));
         this.button09.getStyleClass().add(myBoard.getDistrict(2, 2).getCharacter().getName());
+        this.button09.setRotate(convertRotate(myBoard.getDistrict(2,2).getOrientation()));
 
+        //-------------------------------------------------------------------------------------------------------
 
+    }
+
+    //Convertisseur
+    public int convertRotate(Orientation sens){
+        if (sens == Orientation.WEST){
+            return (90);
+        }
+        else if (sens == Orientation.SOUTH){
+            return (180);
+        }
+        else if (sens == Orientation.EAST){
+            return (270);
+        }
+        else{
+            return (0);
+        }
     }
 
     public void pushed(ActionEvent e) {
