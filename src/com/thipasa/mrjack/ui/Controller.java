@@ -1,6 +1,8 @@
 package com.thipasa.mrjack.ui;
 
+import com.thipasa.mrjack.model.Alibi;
 import com.thipasa.mrjack.model.Board;
+import com.thipasa.mrjack.players.Detective;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,23 +19,62 @@ public class Controller implements Initializable {
     //Button pour les différents districts
     @FXML
     public Button button01;
+    public Button button01_90;
+    public Button button01_180;
+    public Button button01_270;
     @FXML
     public Button button02;
+    public Button button02_90;
+    public Button button02_180;
+    public Button button02_270;
     @FXML
     public Button button03;
+    public Button button03_90;
+    public Button button03_180;
+    public Button button03_270;
     @FXML
     public Button button04;
+    public Button button04_90;
+    public Button button04_180;
+    public Button button04_270;
     @FXML
     public Button button05;
+    public Button button05_90;
+    public Button button05_180;
+    public Button button05_270;
     @FXML
     public Button button06;
+    public Button button06_90;
+    public Button button06_180;
+    public Button button06_270;
     @FXML
     public Button button07;
+    public Button button07_90;
+    public Button button07_180;
+    public Button button07_270;
     @FXML
     public Button button08;
+    public Button button08_90;
+    public Button button08_180;
+    public Button button08_270;
     @FXML
     public Button button09;
+    public Button button09_90;
+    public Button button09_180;
+    public Button button09_270;
     @FXML
+
+    public Button[][] degButton = {
+            {button01, button01_90, button01_180, button01_270},
+            {button02, button02_90, button02_180, button02_270},
+            {button03, button03_90, button03_180, button03_270},
+            {button04, button04_90, button04_180, button04_270},
+            {button05, button05_90, button05_180, button05_270},
+            {button06, button06_90, button06_180, button06_270},
+            {button07, button07_90, button07_180, button07_270},
+            {button08, button08_90, button08_180, button08_270},
+            {button09, button09_90, button09_180, button09_270}
+    };
 
     //Boutton pour les différents détectives
     public Button button0;
@@ -59,6 +100,15 @@ public class Controller implements Initializable {
     public Button button10;
     @FXML
     public Button button11;
+
+    //Information pour leurs positionnement
+
+    public Detective Sherlock;
+    private int bSherlock;
+    public Detective Watson;
+    private int bWatson;
+    public Detective Tobi;
+    private int bTobi;
 
 
     @Override
@@ -119,7 +169,7 @@ public class Controller implements Initializable {
 
         this.button3.setDisable(true);
         //this.buttom3.getStyleClass().removeAll("nom de la classe");
-        this.button3.getStyleClass().add("Alibi3");
+        this.button3.getStyleClass().add("Watson");
 
         this.button4.setDisable(true);
         //this.buttom4.getStyleClass().removeAll("nom de la classe");
@@ -131,7 +181,7 @@ public class Controller implements Initializable {
 
         this.button6.setDisable(true);
         //this.buttom6.getStyleClass().removeAll("nom de la classe");
-        this.button6.getStyleClass().add("Alibi6");
+        this.button6.getStyleClass().add("Tobi");
 
         this.button7.setDisable(true);
         //this.buttom7.getStyleClass().removeAll("nom de la classe");
@@ -151,9 +201,11 @@ public class Controller implements Initializable {
 
         this.button11.setDisable(true);
         //this.buttom11.getStyleClass().removeAll("nom de la classe");
-        this.button11.getStyleClass().add("Alibi11");
+        this.button11.getStyleClass().add("Sherlock1");
 
-        Board myBoard = new Board();
+
+
+        //-------------------------------------------------------------------------------------------------------
 
         //this.buttom0.setStyle("-fx-background: url('../Pictures/districts/common-verso.png');");
     }

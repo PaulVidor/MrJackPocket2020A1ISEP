@@ -1,31 +1,4 @@
-.Alibi0 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.Alibi1 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.Alibi2 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.Alibi3 {
+.Watson {
     -fx-background-image: url('pictures/detectives/Watson.png');
     background-image: url('pictures/detectives/Watson.png');
     -fx-background-size: contain;
@@ -34,25 +7,7 @@
     background-repeat: no-repeat;
 }
 
-.Alibi4 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.Alibi5 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
-    -fx-background-size: contain;
-    -fx-background-repeat: no-repeat;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.Alibi6 {
+.Tobi {
     -fx-background-image: url('pictures/detectives/Tobi.png');
     background-image: url('pictures/detectives/Tobi.png');
     -fx-background-size: contain;
@@ -61,43 +16,89 @@
     background-repeat: no-repeat;
 }
 
-.Alibi7 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
+
+.Sherlock1 {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.Alibi8 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
+.PINK {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.Alibi9 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
+.BLACK {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.Alibi10 {
-    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
-    background-image: url('pictures/districts/JeremyBert-recto.png');
+.ORANGE {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-.Alibi11 {
+.VIOLET {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.GREEN {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.YELLOW {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.BLUE {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.WHITE {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.BROWN {
     -fx-background-image: url('pictures/detectives/Sherlock.png');
     background-image: url('pictures/detectives/Sherlock.png');
     -fx-background-size: contain;

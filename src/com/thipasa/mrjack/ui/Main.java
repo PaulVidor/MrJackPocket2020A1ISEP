@@ -18,7 +18,7 @@ public class Main extends Application {
         //primaryStage.show();
 
         Scene Mainscene = new Scene(root, 1800, 900);
-        Mainscene.getStylesheets().add("CSSButtom.css");
+        Mainscene.getStylesheets().add("CSSButton.css");
 
         primaryStage.setScene(Mainscene);
         primaryStage.show();
