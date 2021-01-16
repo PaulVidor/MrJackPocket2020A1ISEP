@@ -117,7 +117,7 @@ public class Controller implements Initializable {
 
         //------------------------------------------------------------
 
-        this.button01.setDisable(false);
+        this.button01.setDisable(true);
         //this.buttom01.getStyleClass().removeAll("nom de la classe");
         this.button01.getStyleClass().add("Alibi0");
 
