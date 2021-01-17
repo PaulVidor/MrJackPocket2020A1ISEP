@@ -17,7 +17,7 @@
 }
 
 
-.Sherlock1 {
+.Sherlock {
     -fx-background-image: url('pictures/detectives/Sherlock.png');
     background-image: url('pictures/detectives/Sherlock.png');
     -fx-background-size: contain;
@@ -245,4 +245,5 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
 
