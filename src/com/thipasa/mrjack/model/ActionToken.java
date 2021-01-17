@@ -1,10 +1,10 @@
 package com.thipasa.mrjack.model;
 
 public enum ActionToken {
-    JETON1("Piocher un alibi", "Deplacer Sherlock"),
-    JETON2("Deplacer Tobby", "Deplacer Watson"),
-    JETON3("Faire tourner un quartier", "Echanger deux quartiers"),
-    JETON4("Faire tourner un quartier", "Deplacer les trois detectives");
+    JETON1("Piocherunalibi", "DeplacerSherlock"),
+    JETON2("DeplacerTobby", "DeplacerWatson"),
+    JETON3("Fairetournerunquartier1", "Echangerdeuxquartiers"),
+    JETON4("Fairetournerunquartier2", "Deplacerlestroisdetectives");
 
     private boolean isHead;
     private boolean hasBeenUsed;

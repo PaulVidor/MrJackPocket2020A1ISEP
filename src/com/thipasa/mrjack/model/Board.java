@@ -134,6 +134,13 @@ public class Board {
         }
     }
 
+    // LAAAAAAAAAAAAAAAAAAAAAA
+
+    public ActionToken getActionToken(int i){
+        return this.listOfTokens[i];
+    }
+
+
     public void alibiDraw() {
         Alibi alibiCardDrawed;
         alibiCardDrawed = alibiCards.pop();

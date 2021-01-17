@@ -116,3 +116,133 @@
     background-repeat: no-repeat;
 }
 
+.Tour2{
+    -fx-background-image: url('pictures/tours/tour2.PNG');
+    background-image: url('pictures/tours/tour2.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour3{
+    -fx-background-image: url('pictures/tours/tour3.PNG');
+    background-image: url('pictures/tours/tour3.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour4{
+    -fx-background-image: url('pictures/tours/tour4.PNG');
+    background-image: url('pictures/tours/tour4.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour5{
+    -fx-background-image: url('pictures/tours/tour5.PNG');
+    background-image: url('pictures/tours/tour5.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour6{
+    -fx-background-image: url('pictures/tours/tour6.PNG');
+    background-image: url('pictures/tours/tour6.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour7{
+    -fx-background-image: url('pictures/tours/tour7.PNG');
+    background-image: url('pictures/tours/tour7.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour8{
+    -fx-background-image: url('pictures/tours/tour8.PNG');
+    background-image: url('pictures/tours/tour8.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.DeplacerSherlock{
+    -fx-background-image: url('pictures/actions/Jeton1-Face2.png');
+    background-image: url('pictures/actions/Jeton1-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.DeplacerTobby{
+    -fx-background-image: url('pictures/actions/Jeton2-Face1.png');
+    background-image: url('pictures/actions/Jeton2-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.DeplacerWatson{
+    -fx-background-image: url('pictures/actions/Jeton2-Face2.png');
+    background-image: url('pictures/actions/Jeton2-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Fairetournerunquartier1{
+    -fx-background-image: url('pictures/actions/Jeton3-Face1.png');
+    background-image: url('pictures/actions/Jeton3-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Echangerdeuxquartiers{
+    -fx-background-image: url('pictures/actions/Jeton3-Face2.png');
+    background-image: url('pictures/actions/Jeton3-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Fairetournerunquartier2{
+    -fx-background-image: url('pictures/actions/Jeton4-Face1.png');
+    background-image: url('pictures/actions/Jeton4-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Deplacerlestroisdetectives{
+    -fx-background-image: url('pictures/actions/Jeton4-Face2.png');
+    background-image: url('pictures/actions/Jeton4-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Piocherunalibi{
+    -fx-background-image: url('pictures/actions/Jeton1-Face1.png');
+    background-image: url('pictures/actions/Jeton1-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+

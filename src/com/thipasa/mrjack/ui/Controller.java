@@ -18,54 +18,34 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    private District[][] boardverif;
-
     //Button pour les différents districts
     @FXML
     public Button button01;
-    public Button button01_90;
-    public Button button01_180;
-    public Button button01_270;
+
     @FXML
     public Button button02;
-    public Button button02_90;
-    public Button button02_180;
-    public Button button02_270;
+
     @FXML
     public Button button03;
-    public Button button03_90;
-    public Button button03_180;
-    public Button button03_270;
+
     @FXML
     public Button button04;
-    public Button button04_90;
-    public Button button04_180;
-    public Button button04_270;
+
     @FXML
     public Button button05;
-    public Button button05_90;
-    public Button button05_180;
-    public Button button05_270;
+
     @FXML
     public Button button06;
-    public Button button06_90;
-    public Button button06_180;
-    public Button button06_270;
+
     @FXML
     public Button button07;
-    public Button button07_90;
-    public Button button07_180;
-    public Button button07_270;
+
     @FXML
     public Button button08;
-    public Button button08_90;
-    public Button button08_180;
-    public Button button08_270;
+
     @FXML
     public Button button09;
-    public Button button09_90;
-    public Button button09_180;
-    public Button button09_270;
+
     @FXML
 
     //Boutton pour les différents détectives
@@ -92,22 +72,27 @@ public class Controller implements Initializable {
     public Button button10;
     @FXML
     public Button button11;
+
+    //-----------------------------------------
     @FXML
-    public Button buttonAfficher;
+    public Button buttonAfficher; //boutonTours
+    //-----------------------------------------
+
+    @FXML
+    public Button buttonAct1;
+    @FXML
+    public Button buttonAct2;
+    @FXML
+    public Button buttonAct3;
+    @FXML
+    public Button buttonAct4;
 
     //Information pour leurs positionnement
-
-    public Detective Sherlock;
-    private int bSherlock;
-    public Detective Watson;
-    private int bWatson;
-    public Detective Tobi;
-    private int bTobi;
 
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        /**Initialisation du projet */
+        //Initialisation du projet
 
         //------------------------------------------------------------
 
@@ -198,31 +183,58 @@ public class Controller implements Initializable {
 
         Board myBoard = new Board();
 
-        boardverif = new District[1][1];
+
 
         //myBoard.getDistrict(0,0)
         this.button01.getStyleClass().add(myBoard.getDistrict(0, 0).getCharacter().getName());
         this.button01.setRotate(convertRotate(myBoard.getDistrict(0,0).getOrientation()));
+
         this.button02.getStyleClass().add(myBoard.getDistrict(0, 1).getCharacter().getName());
         this.button02.setRotate(convertRotate(myBoard.getDistrict(0,1).getOrientation()));
+
         this.button03.getStyleClass().add(myBoard.getDistrict(0, 2).getCharacter().getName());
         this.button03.setRotate(convertRotate(myBoard.getDistrict(0,2).getOrientation()));
+
         this.button04.getStyleClass().add(myBoard.getDistrict(1, 0).getCharacter().getName());
         this.button04.setRotate(convertRotate(myBoard.getDistrict(1,0).getOrientation()));
+
         this.button05.getStyleClass().add(myBoard.getDistrict(1, 1).getCharacter().getName());
         this.button05.setRotate(convertRotate(myBoard.getDistrict(1,1).getOrientation()));
+
         this.button06.getStyleClass().add(myBoard.getDistrict(1, 2).getCharacter().getName());
         this.button06.setRotate(convertRotate(myBoard.getDistrict(1,2).getOrientation()));
+
         this.button07.getStyleClass().add(myBoard.getDistrict(2, 0).getCharacter().getName());
         this.button07.setRotate(convertRotate(myBoard.getDistrict(2,0).getOrientation()));
+
         this.button08.getStyleClass().add(myBoard.getDistrict(2, 1).getCharacter().getName());
         this.button08.setRotate(convertRotate(myBoard.getDistrict(2,1).getOrientation()));
+
         this.button09.getStyleClass().add(myBoard.getDistrict(2, 2).getCharacter().getName());
         this.button09.setRotate(convertRotate(myBoard.getDistrict(2,2).getOrientation()));
 
 
         //-------------------------------------------------------------------------------------------------------
 
+        this.buttonAct1.setDisable(false);
+        this.buttonAct1.getStyleClass().add("ActionToken");
+
+        this.buttonAct2.setDisable(false);
+        this.buttonAct2.getStyleClass().add("ActionToken");
+
+        this.buttonAct3.setDisable(false);
+        this.buttonAct3.getStyleClass().add("ActionToken");
+
+        this.buttonAct4.setDisable(false);
+        this.buttonAct4.getStyleClass().add("ActionToken");
+
+
+        this.buttonAct1.getStyleClass().add(myBoard.getActionToken(0).toString());
+        this.buttonAct2.getStyleClass().add(myBoard.getActionToken(1).toString());
+        this.buttonAct3.getStyleClass().add(myBoard.getActionToken(2).toString());
+        this.buttonAct4.getStyleClass().add(myBoard.getActionToken(3).toString());
+
+        //-------------------------------------------------------------------------------------------------------
 
     }
 
