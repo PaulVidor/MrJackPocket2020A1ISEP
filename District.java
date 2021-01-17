@@ -23,11 +23,11 @@ public class District {
         return character;
     }
 
-    public void isJack () {
+    public void isJack() {
         isJack = true;
     }
 
-    public void isCross () {
+    public void isCross() {
         isCross = true;
     }
 

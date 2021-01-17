@@ -1,0 +1,248 @@
+.Watson {
+    -fx-background-image: url('pictures/detectives/Watson.png');
+    background-image: url('pictures/detectives/Watson.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tobi {
+    -fx-background-image: url('pictures/detectives/Tobi.png');
+    background-image: url('pictures/detectives/Tobi.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.Sherlock1 {
+    -fx-background-image: url('pictures/detectives/Sherlock.png');
+    background-image: url('pictures/detectives/Sherlock.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Madame {
+    -fx-background-image: url('pictures/districts/Madame-rector.png');
+    background-image: url('pictures/districts/Madame-rector.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Goodley {
+    -fx-background-image: url('pictures/districts/SgtGoodley-recto.png');
+    background-image: url('pictures/districts/SgtGoodley-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Bert {
+    -fx-background-image: url('pictures/districts/JeremyBert-recto.png');
+    background-image: url('pictures/districts/JeremyBert-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Gull {
+    -fx-background-image: url('pictures/districts/WilliamGull-recto.png');
+    background-image: url('pictures/districts/WilliamGull-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Stealthy {
+    -fx-background-image: url('pictures/districts/MissStealthy-recto.png');
+    background-image: url('pictures/districts/MissStealthy-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Smith {
+    -fx-background-image: url('pictures/districts/JohnSmith-recto.png');
+    background-image: url('pictures/districts/JohnSmith-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Lestrade {
+    -fx-background-image: url('pictures/districts/InspLestrade-recto.png');
+    background-image: url('pictures/districts/InspLestrade-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Pizer {
+    -fx-background-image: url('pictures/districts/JohnPizer-recto.png');
+    background-image: url('pictures/districts/JohnPizer-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Lane{
+    -fx-background-image: url('pictures/districts/JosephLane-recto.png');
+    background-image: url('pictures/districts/JosephLane-recto.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour1{
+    -fx-background-image: url('pictures/tours/tour1.PNG');
+    background-image: url('pictures/tours/tour1.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour2{
+    -fx-background-image: url('pictures/tours/tour2.PNG');
+    background-image: url('pictures/tours/tour2.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour3{
+    -fx-background-image: url('pictures/tours/tour3.PNG');
+    background-image: url('pictures/tours/tour3.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour4{
+    -fx-background-image: url('pictures/tours/tour4.PNG');
+    background-image: url('pictures/tours/tour4.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour5{
+    -fx-background-image: url('pictures/tours/tour5.PNG');
+    background-image: url('pictures/tours/tour5.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour6{
+    -fx-background-image: url('pictures/tours/tour6.PNG');
+    background-image: url('pictures/tours/tour6.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour7{
+    -fx-background-image: url('pictures/tours/tour7.PNG');
+    background-image: url('pictures/tours/tour7.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.Tour8{
+    -fx-background-image: url('pictures/tours/tour8.PNG');
+    background-image: url('pictures/tours/tour8.PNG');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.DeplacerSherlock{
+    -fx-background-image: url('pictures/actions/Jeton1-Face2.png');
+    background-image: url('pictures/actions/Jeton1-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.DeplacerTobby{
+    -fx-background-image: url('pictures/actions/Jeton2-Face1.png');
+    background-image: url('pictures/actions/Jeton2-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.DeplacerWatson{
+    -fx-background-image: url('pictures/actions/Jeton2-Face2.png');
+    background-image: url('pictures/actions/Jeton2-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Fairetournerunquartier1{
+    -fx-background-image: url('pictures/actions/Jeton3-Face1.png');
+    background-image: url('pictures/actions/Jeton3-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Echangerdeuxquartiers{
+    -fx-background-image: url('pictures/actions/Jeton3-Face2.png');
+    background-image: url('pictures/actions/Jeton3-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Fairetournerunquartier2{
+    -fx-background-image: url('pictures/actions/Jeton4-Face1.png');
+    background-image: url('pictures/actions/Jeton4-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Deplacerlestroisdetectives{
+    -fx-background-image: url('pictures/actions/Jeton4-Face2.png');
+    background-image: url('pictures/actions/Jeton4-Face2.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.Piocherunalibi{
+    -fx-background-image: url('pictures/actions/Jeton1-Face1.png');
+    background-image: url('pictures/actions/Jeton1-Face1.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
