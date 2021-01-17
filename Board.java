@@ -35,7 +35,7 @@ public class Board {
     private MrJackPlayer mrJackPlayer;
     private String ask1;
     private String answer1;
-
+    public Alibi alibiCardDrawed;
 
     public Board() {
         this.generate();
@@ -147,12 +147,11 @@ public class Board {
     }
 
 
-    public String alibiDraw() {
-        Alibi alibiCardDrawed;
-        alibiCardDrawed = alibiCards.pop();
+    public void alibiDraw() {
+        this.alibiCardDrawed = alibiCards.pop();
         //System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
         //System.out.println(investigatorPlays());
-        if (investigatorPlays()) {
+        /*if (investigatorPlays()) {
             investigatorPlayer.addToAlibiCards(alibiCardDrawed);
             investigatorPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
             for (int i = 0; i < 3; i++) {
@@ -165,9 +164,7 @@ public class Board {
         } else {
             mrJackPlayer.addToAlibiCards(alibiCardDrawed);
             mrJackPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
-        }
-
-        return alibiCardDrawed.getName();
+        }*/
     }
 
     public void moveDetective(Detective detective) {

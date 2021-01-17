@@ -308,7 +308,8 @@ public class Controller implements Initializable {
             //System.out.println(this.myBoard.getActionToken(0).toString());
             if (myBoard.getActionToken(0).toString().equals("Piocherunalibi")){
                 //System.out.println(myBoard.alibiDraw());
-                this.buttonAfficherAlibi.getStyleClass().add(myBoard.alibiDraw());
+                myBoard.alibiDraw();
+                this.buttonAfficherAlibi.getStyleClass().add(myBoard.alibiCardDrawed.getName());
 
             }
             /*else{
