@@ -4,9 +4,7 @@ import com.thipasa.mrjack.game.Game;
 import com.thipasa.mrjack.players.Detective;
 import com.thipasa.mrjack.players.InvestigatorPlayer;
 import com.thipasa.mrjack.players.MrJackPlayer;
-import com.thipasa.mrjack.ui.Controller;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -35,6 +33,9 @@ public class Board {
     private int numberOfDistrictVerso;
     private InvestigatorPlayer investigatorPlayer;
     private MrJackPlayer mrJackPlayer;
+    private String ask1;
+    private String answer1;
+    public Alibi alibiCardDrawed;
 
     public Board() {
         this.generate();
@@ -53,7 +54,7 @@ public class Board {
 
         deckGenerate();
         mrJackCharacterGenerate();
-        playersGenerate();
+        //playersGenerate();
         districtBoardGenerate();
         shuffleTokens();
     }
@@ -73,13 +74,18 @@ public class Board {
         Collections.shuffle(alibiCards);
     }
 
+
+
     public void playersGenerate() {
-        System.out.println("Quel est le nom du joueur enqueteur ?");
-        String userName = Game.scan.nextLine();
-        investigatorPlayer = new InvestigatorPlayer(new ArrayList(), 0, userName);
-        System.out.println("Quel est le nom du joueur MrJack ?");
-        userName = Game.scan.nextLine();
-        mrJackPlayer = new MrJackPlayer(new ArrayList(), 0, userName, mrJackCharacter);
+
+    }
+
+    public String getAsk1() {
+        return ask1;
+    }
+
+    public void setAsk1(String ask1) {
+        this.ask1 = ask1;
     }
 
 
@@ -142,11 +148,10 @@ public class Board {
 
 
     public void alibiDraw() {
-        Alibi alibiCardDrawed;
-        alibiCardDrawed = alibiCards.pop();
-        System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
-        System.out.println(investigatorPlays());
-        if (investigatorPlays()) {
+        this.alibiCardDrawed = alibiCards.pop();
+        //System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
+        //System.out.println(investigatorPlays());
+        /*if (investigatorPlays()) {
             investigatorPlayer.addToAlibiCards(alibiCardDrawed);
             investigatorPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
             for (int i = 0; i < 3; i++) {
@@ -159,7 +164,7 @@ public class Board {
         } else {
             mrJackPlayer.addToAlibiCards(alibiCardDrawed);
             mrJackPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
-        }
+        }*/
     }
 
     public void moveDetective(Detective detective) {
@@ -484,14 +489,20 @@ public class Board {
         }
     }
 
-    /*public MrJackPlayer getMrJackPlayer() {
+    public MrJackPlayer getMrJackPlayer() {
         return mrJackPlayer;
-    }*/
+    }
+
+    public Alibi getMrJackCharacter2() {
+        return mrJackCharacter;
+    }
 
     public String getMrJackCharacter() {
         return mrJackCharacter.getName() + " (" + mrJackCharacter.toString().charAt(0)
                 + mrJackCharacter.toString().charAt(1) + mrJackCharacter.toString().charAt(2) + ")";
     }
+
+
 
     //TEST
 
@@ -503,5 +514,27 @@ public class Board {
         return numberOfDistrictVerso;
     }
 
+    public void play() {
+        System.out.println("\nLa partie commence !\n");
+        System.out.println("Le personnage " + getMrJackCharacter() + " est Mr. Jack !\n");
 
+        while (!isEndGame()) {
+            System.out.println("\n------ Nous sommes au tour numero " + getTurnNumber() + " ------");
+            gameToPrint();
+            System.out.println();
+            System.out.println("Le joueur " + (getInvestigatorStarts() ? "enqueteur" : "Mr. Jack") + " commence à jouer");
+            int userChoice = Game.scan.nextInt();
+            chooseActions(userChoice);
+            gameToPrint();
+
+            while (!actionsAllUsed()) {
+                System.out.println("\nC'est au tour de " + (investigatorPlays() ? "l'enqueteur" : "Mr. Jack") + " de choisir une action");
+                userChoice = Game.scan.nextInt();
+                chooseActions(userChoice);
+                gameToPrint();
+            }
+            endTurn();
+        }
+        gameToPrint();
+    }
 }
