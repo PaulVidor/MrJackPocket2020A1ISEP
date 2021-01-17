@@ -13,10 +13,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class Controller implements Initializable {
-    public static final Scanner scan = new Scanner(System.in);
+
     //Button pour les différents districts
     @FXML
     public Button button01;
@@ -45,9 +44,9 @@ public class Controller implements Initializable {
     @FXML
     public Button button09;
 
-    @FXML
 
-    //Boutton pour les différents détectives
+    //Boutton pour les différents detectives
+    @FXML
     public Button button0;
     @FXML
     public Button button1;
@@ -72,6 +71,10 @@ public class Controller implements Initializable {
     @FXML
     public Button button11;
 
+    @FXML
+    public Button buttonAfficherAlibi;
+
+    Board myBoard = new Board();
     //-----------------------------------------
     @FXML
     public Button buttonAfficher; //boutonTours
@@ -92,8 +95,9 @@ public class Controller implements Initializable {
     public Button send;
     @FXML
     public TextField textField;
-    public Label label;
-
+    public Label label1;
+    public Label label2;
+    public Button playGame;
 
 
     //Information pour leurs positionnement
@@ -152,7 +156,7 @@ public class Controller implements Initializable {
 
         this.button3.setDisable(true);
         //this.buttom3.getStyleClass().removeAll("nom de la classe");
-        this.button3.getStyleClass().add("Watson");
+        this.button3.getStyleClass().add("Sherlock");
 
         this.button4.setDisable(true);
         //this.buttom4.getStyleClass().removeAll("nom de la classe");
@@ -184,37 +188,44 @@ public class Controller implements Initializable {
 
         this.button11.setDisable(true);
         //this.buttom11.getStyleClass().removeAll("nom de la classe");
-        this.button11.getStyleClass().add("Sherlock1");
+        this.button11.getStyleClass().add("Watson");
 
         this.buttonAfficher.setDisable(false);
         this.buttonAfficher.getStyleClass().add("Tour1");
+
 
 
         //-------------------------------------------------------------------------------------------------------
 
         //this.buttom0.setStyle("-fx-background: url('../Pictures/districts/common-verso.png');");
 
-        Board myBoard = new Board();
 
-        // Communication with the players
+
+        // Nom des joueurs
         myBoard.setAsk1("Quel est le nom du joueur enqueteur ?");
         TextInputDialog dialog = new TextInputDialog("Name");
-        dialog.setHeaderText("Quel est le nom du joueur enqueteur ?");
-
-
+        dialog.setHeaderText(myBoard.getAsk1());
         Optional<String> result = dialog.showAndWait();
 
         result.ifPresent(name -> {
-            this.label.setText(name);
+            this.label1.setText(name);
+        });
+        String userName = label1.getText();
+        InvestigatorPlayer investigatorPlayer = new InvestigatorPlayer(new ArrayList(), 0, userName);
+
+        TextInputDialog dialog2 = new TextInputDialog("Name");
+        myBoard.setAsk1("Quel est le nom du joueur MrJack ?");
+        dialog2.setHeaderText(myBoard.getAsk1());
+        result = dialog2.showAndWait();
+
+        result.ifPresent(name -> {
+            this.label2.setText(name);
         });
 
-
-        String userName = label.getText();
-        InvestigatorPlayer investigatorPlayer = new InvestigatorPlayer(new ArrayList(), 0, userName);
-        myBoard.setAsk1("Quel est le nom du joueur MrJack ?");
-        System.out.println(myBoard.getAsk1());
-        userName = "";
+        userName = label2.getText();
         MrJackPlayer mrJackPlayer = new MrJackPlayer(new ArrayList(), 0, userName, myBoard.getMrJackCharacter2());
+
+        ///////////////////////////////////////////////////////////
 
         this.textArea.setText(myBoard.getAsk1());
 
@@ -273,6 +284,8 @@ public class Controller implements Initializable {
 
     }
 
+
+
     //Convertisseur
     public int convertRotate(Orientation sens){
         if (sens == Orientation.WEST){
@@ -291,13 +304,27 @@ public class Controller implements Initializable {
 
     public void pushed(ActionEvent e) {
         //Ca exécute cette méthode en appuyant sur le bouton
+        if ((Button)e.getSource() == buttonAct3){
+            //System.out.println(this.myBoard.getActionToken(0).toString());
+            if (myBoard.getActionToken(0).toString().equals("Piocherunalibi")){
+                //System.out.println(myBoard.alibiDraw());
+                this.buttonAfficherAlibi.getStyleClass().add(myBoard.alibiDraw());
+
+            }
+            /*else{
+                if (this.button1.getStyleClass().add("Watson") ==  true){
+
+                }
+                else if
+                this.buttonAfficherAlibi.getStyleClass().add(myBoard.moveDetective());
+            }*/
+
+        }
     }
     public void send(){
         send.setOnAction(e -> System.out.println(textField.getText()));
     }
 
-    //Logique du main
-    public void play() {
 
-    }
+
 }

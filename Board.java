@@ -147,11 +147,11 @@ public class Board {
     }
 
 
-    public void alibiDraw() {
+    public String alibiDraw() {
         Alibi alibiCardDrawed;
         alibiCardDrawed = alibiCards.pop();
-        System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
-        System.out.println(investigatorPlays());
+        //System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
+        //System.out.println(investigatorPlays());
         if (investigatorPlays()) {
             investigatorPlayer.addToAlibiCards(alibiCardDrawed);
             investigatorPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
@@ -166,6 +166,8 @@ public class Board {
             mrJackPlayer.addToAlibiCards(alibiCardDrawed);
             mrJackPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
         }
+
+        return alibiCardDrawed.getName();
     }
 
     public void moveDetective(Detective detective) {
@@ -515,5 +517,27 @@ public class Board {
         return numberOfDistrictVerso;
     }
 
+    public void play() {
+        System.out.println("\nLa partie commence !\n");
+        System.out.println("Le personnage " + getMrJackCharacter() + " est Mr. Jack !\n");
 
+        while (!isEndGame()) {
+            System.out.println("\n------ Nous sommes au tour numero " + getTurnNumber() + " ------");
+            gameToPrint();
+            System.out.println();
+            System.out.println("Le joueur " + (getInvestigatorStarts() ? "enqueteur" : "Mr. Jack") + " commence à jouer");
+            int userChoice = Game.scan.nextInt();
+            chooseActions(userChoice);
+            gameToPrint();
+
+            while (!actionsAllUsed()) {
+                System.out.println("\nC'est au tour de " + (investigatorPlays() ? "l'enqueteur" : "Mr. Jack") + " de choisir une action");
+                userChoice = Game.scan.nextInt();
+                chooseActions(userChoice);
+                gameToPrint();
+            }
+            endTurn();
+        }
+        gameToPrint();
+    }
 }
