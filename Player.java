@@ -8,11 +8,13 @@ public abstract class Player {
     public ArrayList<Alibi> alibiCards;
     public int countHourglass;
     public String name;
+    public boolean hasReachObjective;
 
-    public Player(ArrayList<Alibi> alibiCards, int countHourglass, String name) {
+    public Player(ArrayList<Alibi> alibiCards, String name) {
         this.alibiCards = alibiCards;
-        this.countHourglass = countHourglass;
+        this.countHourglass = 0;
         this.name = name;
+        this.hasReachObjective = false;
     }
 
     public ArrayList<Alibi> getAlibiCards() {
@@ -31,7 +33,15 @@ public abstract class Player {
         this.countHourglass += countHourglass;
     }
 
-    public boolean hasReachObjective() {
-        return false;
+    public String getName() {
+        return name;
+    }
+
+    public boolean isHasReachObjective() {
+        return hasReachObjective;
+    }
+
+    public void setHasReachObjective() {
+        hasReachObjective = true;
     }
 }

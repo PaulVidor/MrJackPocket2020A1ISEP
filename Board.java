@@ -4,45 +4,37 @@ import com.thipasa.mrjack.game.Game;
 import com.thipasa.mrjack.players.Detective;
 import com.thipasa.mrjack.players.InvestigatorPlayer;
 import com.thipasa.mrjack.players.MrJackPlayer;
+import com.thipasa.mrjack.players.Player;
 
-import java.util.Collections;
-import java.util.Stack;
+import java.util.*;
 
 public class Board {
-
-    /*
-         0 1 2
-     11  .|.|.  3       1|2|3
-     10  .|.|.  4       4|5|6
-      9  .|.|.  5       7|8|9
-         8 7 6
-    */
-
     private Stack<Alibi> alibiCards;
     private District[][] board;
     private Detective[] listOfDetectives;
     private ActionToken[] listOfTokens;
     private String[] districtToPrint;
     private int turnNumber;
-    private boolean endGame;
+    private boolean chaseMode;
     private boolean investigatorStarts;
-    private boolean endActions;
     private int numberOfActionsUsed;
     private Alibi mrJackCharacter;
     private District mrJackDistrict;
     private int numberOfDistrictVerso;
     private InvestigatorPlayer investigatorPlayer;
     private MrJackPlayer mrJackPlayer;
+    private Player winner;
     private String ask1;
-    private String answer1;
-    public Alibi alibiCardDrawed;
+    private Alibi alibiCardDrawn;
+    private int districtPosition;
+
 
     public Board() {
         this.generate();
     }
 
     public void generate() {
-        alibiCards = new Stack();
+        alibiCards = new Stack<>();
         board = new District[3][3];
         listOfDetectives = Detective.values();
         listOfTokens = ActionToken.values();
@@ -53,8 +45,7 @@ public class Board {
         investigatorStarts = true;
 
         deckGenerate();
-        mrJackCharacterGenerate();
-        //playersGenerate();
+        playersGenerate();
         districtBoardGenerate();
         shuffleTokens();
     }
@@ -62,22 +53,10 @@ public class Board {
     // Fonctions d'initialisation
 
     public void deckGenerate() {
-        Alibi[] values = Alibi.values();
-        for (Alibi character : values) {
-            alibiCards.add(character);
-        }
+        Alibi[] alibis = Alibi.values();
+        mrJackCharacter = Alibi.values()[(int) (Math.random() * 9)];
+        alibiCards.addAll(Arrays.asList(alibis));
         Collections.shuffle(alibiCards);
-    }
-
-    public void mrJackCharacterGenerate() {
-        mrJackCharacter = alibiCards.peek();
-        Collections.shuffle(alibiCards);
-    }
-
-
-
-    public void playersGenerate() {
-
     }
 
     public String getAsk1() {
@@ -86,6 +65,55 @@ public class Board {
 
     public void setAsk1(String ask1) {
         this.ask1 = ask1;
+    }
+
+    public ActionToken getActionToken(int i){
+        return this.listOfTokens[i];
+    }
+
+    public Alibi getMrJackCharacter2() {
+        return mrJackCharacter;
+    }
+
+    public District getDistrict(int i, int j) {
+
+        return this.board[i][j];
+    }
+
+    public MrJackPlayer getMrJackPlayer() {
+        return mrJackPlayer;
+    }
+
+    public InvestigatorPlayer getInvestigatorPlayer() {
+        return investigatorPlayer;
+    }
+
+    public void setInvestigatorPlayer(InvestigatorPlayer investigatorPlayer) {
+        this.investigatorPlayer = investigatorPlayer;
+    }
+
+    public Alibi getAlibiCardDrawn() {
+        return alibiCardDrawn;
+    }
+
+    public void setAlibiCardDrawn(Alibi alibiCardDrawn) {
+        this.alibiCardDrawn = alibiCardDrawn;
+    }
+
+    public void setMrJackPlayer(MrJackPlayer mrJackPlayer) {
+        this.mrJackPlayer = mrJackPlayer;
+    }
+
+    public int getDistrictPosition() {
+        return districtPosition;
+    }
+
+    public void setDistrictPosition(int districtPosition) {
+        this.districtPosition = districtPosition;
+    }
+
+    public void playersGenerate() {
+
     }
 
 
@@ -106,24 +134,21 @@ public class Board {
         board[0][2].setOrientation(Orientation.EAST);
         board[2][1].setOrientation(Orientation.SOUTH);
         alibiCards.remove(mrJackCharacter);
-    }
-
-    public District getDistrict(int i, int j) {
-
-        return this.board[i][j];
-    }
-
-    public boolean actionsAllUsed() {
-        endActions = true;
-        for (int i = 0; i < 4; i++) {
-            if (!ActionToken.values()[i].isHasBeenUsed()) {
-                endActions = false;
-            }
-        }
-        return endActions;
+        Collections.shuffle(alibiCards);
     }
 
     // Fonctions actions
+
+    public boolean actionsAllUsed() {
+        boolean endActions = true;
+        for (int i = 0; i < 4; i++) {
+            if (ActionToken.values()[i].isHasBeenUsed()) {
+                endActions = false;
+                break;
+            }
+        }
+        return !endActions;
+    }
 
     public void shuffleTokens() {
         for (int i = 0; i < 4; i++) {
@@ -140,70 +165,176 @@ public class Board {
         }
     }
 
-    // LAAAAAAAAAAAAAAAAAAAAAA
+    public void chooseActions(int userChoice) {
+        boolean inputError = true;
+        while (inputError) {
+            try {
+                ///int userChoice = Game.scan.nextInt();
+                switch (userChoice - 1) {
+                    case 0:
+                        if (listOfTokens[0].isHasBeenUsed()) {
+                            if (listOfTokens[0].isHead()) {
+                                alibiDraw();
+                            } else {
+                                moveDetective(listOfDetectives[1]);
+                            }
+                            listOfTokens[0].setHasBeenUsed(true);
+                            numberOfActionsUsed++;
+                        } else {
+                            System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
+                        }
+                        break;
 
-    public ActionToken getActionToken(int i){
-        return this.listOfTokens[i];
+                    case 1:
+                        if (listOfTokens[1].isHasBeenUsed()) {
+                            if (listOfTokens[1].isHead()) {
+                                moveDetective(listOfDetectives[2]);
+                            } else {
+                                moveDetective(listOfDetectives[0]);
+                            }
+                            listOfTokens[1].setHasBeenUsed(true);
+                            numberOfActionsUsed++;
+                        } else {
+                            System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
+                        }
+                        break;
+
+                    case 2:
+                        if (listOfTokens[2].isHasBeenUsed()) {
+                            if (listOfTokens[2].isHead()) {
+                                rotate();
+                            } else {
+                                swapDistricts();
+                            }
+                            listOfTokens[2].setHasBeenUsed(true);
+                            numberOfActionsUsed++;
+                        } else {
+                            System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
+                        }
+                        break;
+
+                    case 3:
+                        if (listOfTokens[3].isHasBeenUsed()) {
+                            if (listOfTokens[3].isHead()) {
+                                rotate();
+                            } else {
+                                choiceMoveDetective();
+                            }
+                            listOfTokens[3].setHasBeenUsed(true);
+                            numberOfActionsUsed++;
+                        } else {
+                            System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
+                        }
+                        break;
+
+                    default:
+                        System.out.println("L'entree saisie est invalide, veuillez ressaisir votre demande\n");
+                }
+                inputError = false;
+            } catch (InputMismatchException e) {
+                System.out.println("L'entree doit etre un entier\n");
+                Game.scan.nextLine();
+            }
+        }
     }
 
-
     public void alibiDraw() {
-        this.alibiCardDrawed = alibiCards.pop();
-        //System.out.println("L'alibi obtenu est : " + alibiCardDrawed.getName());
-        //System.out.println(investigatorPlays());
-        /*if (investigatorPlays()) {
-            investigatorPlayer.addToAlibiCards(alibiCardDrawed);
-            investigatorPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
+
+        alibiCardDrawn = alibiCards.pop();
+        if (investigatorPlays()) {
+            System.out.println("L'alibi obtenu est : " + alibiCardDrawn.getName());
+            investigatorPlayer.addToAlibiCards(alibiCardDrawn);
+            investigatorPlayer.addToCountHourglass(alibiCardDrawn.getHourglass());
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if (board[i][j].getCharacter() == alibiCardDrawed) {
+                    if (board[i][j].getCharacter() == alibiCardDrawn) {
                         board[i][j].setVerso();
                     }
                 }
             }
         } else {
-            mrJackPlayer.addToAlibiCards(alibiCardDrawed);
-            mrJackPlayer.addToCountHourglass(alibiCardDrawed.getHourglass());
-        }*/
+            mrJackPlayer.addToAlibiCards(alibiCardDrawn);
+            mrJackPlayer.addToCountHourglass(alibiCardDrawn.getHourglass());
+            System.out.println("Mr. Jack a maintenant " + mrJackPlayer.getCountHourglass() + " sabliers en sa possession");
+        }
     }
 
     public void moveDetective(Detective detective) {
         System.out.println("De combien ce cases souhaitez-vous le faire avancer (1 ou 2) ?");
-        int distance = Game.scan.nextInt();
-        if (distance == 1 || distance == 2) {
-            detective.setPosition((detective.getPosition() + distance) % 12);
-        } else {
-            System.out.println("La demande n'est pas valide, veuillez reessayer");
-            moveDetective(detective);
+        boolean inputError = true;
+        while (inputError) {
+            try {
+                int distance = Game.scan.nextInt();
+                if (distance == 1 || distance == 2) {
+                    detective.setPosition((detective.getPosition() + distance) % 12);
+                } else {
+                    System.out.println("L'entree doit etre egale a 1 ou 2\n");
+                    moveDetective(detective);
+                }
+                inputError = false;
+            } catch (InputMismatchException e) {
+                System.out.println("L'entree doit etre un entier egal a 1 ou 2\n");
+                Game.scan.nextLine();
+            }
         }
     }
 
-    public void moveDetectivesTogether() {
-        System.out.println("Choisissez un detective");
-        int userChoice = Game.scan.nextInt();
-        if (userChoice == 1) {
-            for (int i = 0; i < 3; i++) {
-                listOfDetectives[i].setPosition((listOfDetectives[i].getPosition() + userChoice) % 12);
+    public void choiceMoveDetective() {
+        boolean inputError = true;
+        while (inputError) {
+            try {
+                int userChoice = 1;
+                if (!investigatorPlays()) {
+                    System.out.println("Voulez-vous deplacer 1 detective (1) ou laisser les 3 detectives a leur place (0)?");
+                    userChoice = Game.scan.nextInt();
+                    inputError = false;
+                    if (userChoice != 1 && userChoice != 0) {
+                        System.out.println("L'entree doit etre egale a 1 ou 0\n");
+                        Game.scan.nextLine();
+                        inputError = true;
+                    }
+                }
+                if (userChoice == 1) {
+                    System.out.println("Choisissez un detective a deplacer : Watson (1) | Sherlock (2) | Tobby (3)");
+                    userChoice = Game.scan.nextInt();
+                    listOfDetectives[userChoice - 1].setPosition((listOfDetectives[userChoice - 1].getPosition() + 1) % 12);
+                    inputError = false;
+                }
+            } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("L'entree doit etre un entier compris entre 1 et 3\n");
+                Game.scan.nextLine();
             }
         }
     }
 
     public void rotate() {
         System.out.println("Quel quartier voulez-vous tourner ? Entrez un numero de 1 à 9, en suivant la correspondance");
-        int districtPosition = Game.scan.nextInt();
-        System.out.println("De combien de quarts de tour voulez-vous le faire tourner (sens horaire) ?");
-        int times = Game.scan.nextInt();
-
-        int positionRow = (districtPosition - 1) / 3;
-        int positionColumn = (districtPosition - 1) % 3;
-        District district = board[positionRow][positionColumn];
-
-        if (district.isHasBeenRotate()) {
-            System.out.println("Ce quartier a deja ete tourne, choisissez en un autre\n");
-            rotate();
-        } else {
-            district.setOrientation(Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
-            district.setHasBeenRotate();
+        boolean inputError = true;
+        while (inputError) {
+            try {
+                districtPosition = Game.scan.nextInt();
+                int positionRow = (districtPosition - 1) / 3;
+                System.out.println(positionRow);
+                int positionColumn = (districtPosition - 1) % 3;
+                System.out.println(positionColumn);
+                District district = board[positionRow][positionColumn];
+                if (!district.HasBeenRotate()) {
+                    System.out.println("De combien de quarts de tour voulez-vous le faire tourner (sens horaire) ?");
+                    int times = Game.scan.nextInt();
+                    district.setOrientation(Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
+                    System.out.println("nouvelle orientation"+Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
+                    district.setHasBeenRotate(true);
+                    inputError = false;
+                } else {
+                    System.out.println("Le quartier " + districtPosition + " a deja ete tourne, choisissez en un autre\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("L'entree doit etre un entier\n");
+                Game.scan.nextLine();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("L'entree doit etre un entier compris entre 1 et 9\n");
+                Game.scan.nextLine();
+            }
         }
     }
 
@@ -216,88 +347,32 @@ public class Board {
         */
 
         System.out.println("Quel quartier voulez-vous deplacer ?");
-        int positionDistrict1 = Game.scan.nextInt();
-        System.out.println("Avec quel quartier voulez-vous l'echanger ?");
-        int positionDistrict2 = Game.scan.nextInt();
-        District swapDistrict;
+        boolean inputError = true;
+        while (inputError) {
+            try {
+                int positionDistrict1 = Game.scan.nextInt();
+                System.out.println("Avec quel quartier voulez-vous l'echanger ?");
+                int positionDistrict2 = Game.scan.nextInt();
+                District swapDistrict;
 
-        int positionRow1 = (positionDistrict1 - 1) / 3;
-        int positionColumn1 = (positionDistrict1 - 1) % 3;
-        int positionRow2 = (positionDistrict2 - 1) / 3;
-        int positionColumn2 = (positionDistrict2 - 1) % 3;
+                int positionRow1 = (positionDistrict1 - 1) / 3;
+                int positionColumn1 = (positionDistrict1 - 1) % 3;
+                int positionRow2 = (positionDistrict2 - 1) / 3;
+                int positionColumn2 = (positionDistrict2 - 1) % 3;
 
-        swapDistrict = board[positionRow2][positionColumn2];
-        board[positionRow2][positionColumn2] = board[positionRow1][positionColumn1];
-        board[positionRow1][positionColumn1] = swapDistrict;
-    }
-
-    public void chooseActions(int userChoice) {
-        switch (userChoice - 1) {
-            case 0:
-                if (!listOfTokens[0].isHasBeenUsed()) {
-                    if (listOfTokens[0].isHead()) {
-                        alibiDraw();
-                    } else {
-                        moveDetective(listOfDetectives[1]);
-                    }
-                    listOfTokens[0].setHasBeenUsed(true);
-                    numberOfActionsUsed++;
-                } else {
-                    System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
-                }
-                break;
-
-            case 1:
-                if (!listOfTokens[1].isHasBeenUsed()) {
-                    if (listOfTokens[1].isHead()) {
-                        moveDetective(listOfDetectives[2]);
-                    } else {
-                        moveDetective(listOfDetectives[0]);
-                    }
-                    listOfTokens[1].setHasBeenUsed(true);
-                    numberOfActionsUsed++;
-                } else {
-                    System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
-                }
-                break;
-
-            case 2:
-                if (!listOfTokens[2].isHasBeenUsed()) {
-                    if (listOfTokens[2].isHead()) {
-                        rotate();
-                    } else {
-                        swapDistricts();
-                    }
-                    listOfTokens[2].setHasBeenUsed(true);
-                    numberOfActionsUsed++;
-                } else {
-                    System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
-                }
-                break;
-
-            case 3:
-                if (!listOfTokens[3].isHasBeenUsed()) {
-                    if (listOfTokens[3].isHead()) {
-                        rotate();
-                    } else {
-                        moveDetectivesTogether();
-                    }
-                    listOfTokens[3].setHasBeenUsed(true);
-                    numberOfActionsUsed++;
-                } else {
-                    System.out.println("Cette action a deja ete utilisee, choisissez en une autre ");
-                }
-                break;
-
-            default:
-                System.out.println("Il y a eu une erreur, veuillez ressaisir votre demande\n");
+                swapDistrict = board[positionRow2][positionColumn2];
+                board[positionRow2][positionColumn2] = board[positionRow1][positionColumn1];
+                board[positionRow1][positionColumn1] = swapDistrict;
+                inputError = false;
+            } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("L'entree doit etre un entier compris entre 1 et 9\n");
+                Game.scan.nextLine();
+            }
         }
     }
 
+    // Fin de tour
     // Vision des detectives
-
-    //Fonction à appeler à la fin, quand le tour va se terminer
-    //Voir si on peut faire en sorte de savoir qui a vu mr. Jack
 
     public void visibleCharacters() {
         int detectivePosition;
@@ -368,87 +443,105 @@ public class Board {
                     break;
 
                 default:
-                    System.out.println("il y a eu une erreur");
+                    System.out.println("Il y a eu une erreur, veuillez redemarrer le programme");
             }
         }
     }
 
     public void makeDistrictsVerso() {
-        if (mrJackDistrict.isInSight()) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (mrJackDistrict.isInSight()) {
                     if (!board[i][j].isInSight()) {
                         board[i][j].setVerso();
                     }
-                }
-            }
-        } else {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
+                } else {
                     if (board[i][j].isInSight()) {
                         board[i][j].setVerso();
                     }
                 }
-            }
-        }
-    }
-
-    public boolean isMrJackCaught() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
                 if (!board[i][j].isRecto()) {
                     numberOfDistrictVerso++;
                 }
             }
         }
-        System.out.println(numberOfDistrictVerso);
-        if (numberOfDistrictVerso == 8) {
-            endGame = true;
-        }
-        return endGame;
     }
 
-    // Fin de tour
-
-    public void endTurn() {
-        visibleCharacters();
-        makeDistrictsVerso();
-        isMrJackCaught();
-        turnNumber++;
-        numberOfActionsUsed = 0;
-        numberOfDistrictVerso = 0;
-        changeHand();
-        shuffleTokens();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j].setInSight(false);
+    public void hasPlayersReachObjectives() {
+        if (!chaseMode) {
+            if (numberOfDistrictVerso == 8) {
+                investigatorPlayer.setHasReachObjective();
+            }
+            if (mrJackPlayer.getCountHourglass() >= 6) {
+                mrJackPlayer.setHasReachObjective();
+            }
+            if (investigatorPlayer.isHasReachObjective() != mrJackPlayer.isHasReachObjective()) {
+                winner = (investigatorPlayer.isHasReachObjective() ? investigatorPlayer : mrJackPlayer);
+            }
+            if (investigatorPlayer.isHasReachObjective() == mrJackPlayer.isHasReachObjective() && investigatorPlayer.isHasReachObjective()) {
+                if (mrJackDistrict.isInSight()) {
+                    winner = investigatorPlayer;
+                } else {
+                    chaseMode = true;
+                    hasPlayersReachObjectives();
+                }
+            }
+        } else {
+            if (turnNumber == 8) {
+                winner = mrJackPlayer;
+            }
+            if (mrJackDistrict.isInSight() && turnNumber <= 8) {
+                winner = investigatorPlayer;
             }
         }
     }
 
+    //Reset, verifications et logique de fin de tour
+
+    public void endTurn() {
+        visibleCharacters();
+        makeDistrictsVerso();
+        playerAddToCountHourglass();
+        hasPlayersReachObjectives();
+        endTurnToPrint();
+        turnNumber++;
+        numberOfActionsUsed = 0;
+        numberOfDistrictVerso = 0;
+        resetDistricts();
+        changeHand();
+        shuffleTokens();
+    }
+
+    public void resetDistricts() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j].setInSight(false);
+                board[i][j].setHasBeenRotate(false);
+            }
+        }
+    }
+
+    public void playerAddToCountHourglass() {
+        if (mrJackDistrict.isInSight()) {
+            investigatorPlayer.addToCountHourglass(1);
+        } else {
+            mrJackPlayer.addToCountHourglass(1);
+        }
+    }
+
     public boolean isEndGame() {
-        return endGame;
+        return winner != null;
     }
 
     public void changeHand() {
-        if (turnNumber % 2 == 0) {
-            investigatorStarts = false;
-        } else {
-            investigatorStarts = true;
-        }
+        investigatorStarts = turnNumber % 2 != 0;
     }
 
     public boolean investigatorPlays() {
         return ((investigatorStarts && (numberOfActionsUsed == 0 || numberOfActionsUsed == 3)) || (!investigatorStarts && (numberOfActionsUsed == 1 || numberOfActionsUsed == 2)));
     }
 
-    public boolean getInvestigatorStarts() {
-        return investigatorStarts;
-    }
-
-    public int getTurnNumber() {
-        return turnNumber;
-    }
+    // Affichage du board
 
     public void gameToPrint() {
         System.out.println("\nVoici le plateau de jeu : ");
@@ -474,27 +567,36 @@ public class Board {
         for (int i = 0; i < 3; i++) {
             System.out.print(Detective.values()[i].getName() + " : " + (Detective.values()[i].getPosition() + 1) + " - ");
         }
-        System.out.println("\n\n");
 
-        if (!actionsAllUsed()) {
-            System.out.println("Les actions disponibles sont les suivantes : ");
+        if (actionsAllUsed()) {
+            System.out.println("\n\nLes actions disponibles sont les suivantes : ");
             for (int i = 0; i < 4; i++) {
-                if (!listOfTokens[i].isHasBeenUsed()) {
+                if (listOfTokens[i].isHasBeenUsed()) {
                     System.out.println(listOfTokens[i].toString() + " (Tapez " + (i + 1) + ") ");
                 }
             }
             System.out.println();
-        } else {
-            System.out.println("Le tour est fini, nous passons au tour suivant !");
         }
     }
 
-    public MrJackPlayer getMrJackPlayer() {
-        return mrJackPlayer;
-    }
+    //Affichage de fin de tour, avec fin de partie
 
-    public Alibi getMrJackCharacter2() {
-        return mrJackCharacter;
+    public void endTurnToPrint() {
+        if (!chaseMode) {
+            System.out.println("\n\nAttention ! Mr. Jack possede " + mrJackPlayer.getCountHourglass() + " sablier(s) !");
+            System.out.println("\nMr. Jack " + (mrJackDistrict.isInSight() ? "est visible" : "n'est pas visible") +
+                    " pour les detectives...\nLes quartiers " + (mrJackDistrict.isInSight() ? "caches" : "en vue") + " sont " +
+                    "tournes face verso!\n");
+            System.out.println(numberOfDistrictVerso + " quartiers sont a present face verso!");
+            System.out.println("\n\nLe tour est fini, nous passons au tour suivant !");
+        } else {
+            System.out.println("\n\nLes deux joueurs ont atteint leurs objectifs ! L'enqueteur et mr. Jack sont dans une course poursuite !");
+        }
+        if (winner != null) {
+            System.out.println("\n\n" + (winner == investigatorPlayer ? "Mr. Jack est pris au piege !" : "L'enqueteur a perdu trop de temps !"));
+            System.out.println("\nLa partie est finie !\n\nLe joueur " + winner.getName() + " remporte donc la partie en tant " +
+                    (winner == investigatorPlayer ? "qu'enqueteur" : "que mr. Jack") + " !\n\n");
+        }
     }
 
     public String getMrJackCharacter() {
@@ -502,9 +604,20 @@ public class Board {
                 + mrJackCharacter.toString().charAt(1) + mrJackCharacter.toString().charAt(2) + ")";
     }
 
+    //Getters pour la logique du jeu dans game.Game
+
+    public boolean getInvestigatorStarts() {
+        return investigatorStarts;
+    }
+
+    public int getTurnNumber() {
+        return turnNumber;
+    }
+
 
 
     //TEST
+
 
     public District getMrJackDistrict() {
         return mrJackDistrict;
@@ -514,27 +627,6 @@ public class Board {
         return numberOfDistrictVerso;
     }
 
-    public void play() {
-        System.out.println("\nLa partie commence !\n");
-        System.out.println("Le personnage " + getMrJackCharacter() + " est Mr. Jack !\n");
 
-        while (!isEndGame()) {
-            System.out.println("\n------ Nous sommes au tour numero " + getTurnNumber() + " ------");
-            gameToPrint();
-            System.out.println();
-            System.out.println("Le joueur " + (getInvestigatorStarts() ? "enqueteur" : "Mr. Jack") + " commence à jouer");
-            int userChoice = Game.scan.nextInt();
-            chooseActions(userChoice);
-            gameToPrint();
 
-            while (!actionsAllUsed()) {
-                System.out.println("\nC'est au tour de " + (investigatorPlays() ? "l'enqueteur" : "Mr. Jack") + " de choisir une action");
-                userChoice = Game.scan.nextInt();
-                chooseActions(userChoice);
-                gameToPrint();
-            }
-            endTurn();
-        }
-        gameToPrint();
-    }
 }

@@ -4,12 +4,12 @@ public enum ActionToken {
     JETON1("Piocherunalibi", "DeplacerSherlock"),
     JETON2("DeplacerTobby", "DeplacerWatson"),
     JETON3("Fairetournerunquartier1", "Echangerdeuxquartiers"),
-    JETON4("Fairetournerunquartier2", "Deplacerlestroisdetectives");
+    JETON4("Fairetournerunquartier2", "Deplacerundetectiveauchoix");
 
     private boolean isHead;
     private boolean hasBeenUsed;
-    private String nameHead;
-    private String nameTails;
+    private final String nameHead;
+    private final String nameTails;
 
     ActionToken(String nameHead, String nameTails) {
         this.isHead = true;
@@ -23,7 +23,7 @@ public enum ActionToken {
     }
 
     public boolean isHasBeenUsed() {
-        return hasBeenUsed;
+        return !hasBeenUsed;
     }
 
     public void setHead(boolean head) {

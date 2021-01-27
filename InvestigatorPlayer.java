@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class InvestigatorPlayer extends Player {
 
-    public InvestigatorPlayer(ArrayList<Alibi> alibiCards, int countHourglass, String name) {
-        super(alibiCards, countHourglass, name);
+    public InvestigatorPlayer(ArrayList<Alibi> alibiCards, String name) {
+        super(alibiCards, name);
     }
 
     @Override
-    public ArrayList getAlibiCards() {
+    public ArrayList<Alibi> getAlibiCards() {
         return super.getAlibiCards();
     }
 
@@ -31,7 +31,18 @@ public class InvestigatorPlayer extends Player {
     }
 
     @Override
-    public boolean hasReachObjective() {
-        return super.hasReachObjective();
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public boolean isHasReachObjective() {
+        return super.isHasReachObjective();
+    }
+
+    @Override
+    public void setHasReachObjective() {
+        super.setHasReachObjective();
     }
 }
+

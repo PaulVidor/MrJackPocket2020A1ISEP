@@ -2,20 +2,12 @@ package com.thipasa.mrjack.game;
 
 import com.thipasa.mrjack.model.Board;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
-
-    /*
-         0 1 2
-     11  .|.|.  3       1|2|3
-     10  .|.|.  4       4|5|6
-      9  .|.|.  5       7|8|9
-         8 7 6
-     */
-
     private final Board board;
-    public static final Scanner scan = new Scanner(System.in);
+    public static Scanner scan = new Scanner(System.in);
 
     public Game() {
         board = new Board();
@@ -30,24 +22,51 @@ public class Game {
             board.gameToPrint();
             System.out.println();
             System.out.println("Le joueur " + (board.getInvestigatorStarts() ? "enqueteur" : "Mr. Jack") + " commence à jouer");
-            int userChoice = Game.scan.nextInt();
-            board.chooseActions(userChoice);
+            //board.chooseActions();
             board.gameToPrint();
 
-            while (!board.actionsAllUsed()) {
+            while (board.actionsAllUsed()) {
                 System.out.println("\nC'est au tour de " + (board.investigatorPlays() ? "l'enqueteur" : "Mr. Jack") + " de choisir une action");
-                userChoice = Game.scan.nextInt();
-                board.chooseActions(userChoice);
+                //board.chooseActions();
                 board.gameToPrint();
             }
             board.endTurn();
         }
-        board.gameToPrint();
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
-
-        game.play();
+        int userMenuChoice = 0;
+        while (userMenuChoice != 3) {
+            try {
+                System.out.println("------ Mr. Jack Pocket ------");
+                System.out.println("Que souhaitez-vous faire ?");
+                System.out.println("1. Lancer une nouvelle partie\n2. Règles\n3. Quitter");
+                userMenuChoice = Game.scan.nextInt();
+                switch (userMenuChoice) {
+                    case 1:
+                        System.out.println();
+                        Game.scan.nextLine();
+                        Game game = new Game();
+                        game.play();
+                        break;
+                    case 2:
+                        System.out.println("Voici un lien vers les règles :\n\n\n");
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        System.out.println("L'entree est invalide, veuillez reessayer\n\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("L'entree doit etre un entier\n");
+                Game.scan.nextLine();
+                System.out.println();
+            }
+        }
     }
+
+    public Board getBoard() {
+        return board;
+    }
+
 }
