@@ -5,4 +5,4 @@ Projet ISEP 2020 A1 MrJackPocket
 Reproduction du jeu MrJack en console et en interface graphique.
 -----------------------------------------------------------------
 
-Thibault CHANIER, Samuel  MARAJO, Thibault CHANIER.
+Thibault CHANIER, Samuel  MARAJO, Paul VIDOR.
