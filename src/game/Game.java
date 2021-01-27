@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
-
     private final Board board;
     public static Scanner scan = new Scanner(System.in);
 
