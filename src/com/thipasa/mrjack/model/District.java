@@ -1,5 +1,7 @@
 package com.thipasa.mrjack.model;
 
+import javafx.beans.property.BooleanProperty;
+
 public class District {
     private Orientation orientation;
     private final Alibi character;
@@ -8,6 +10,8 @@ public class District {
     private boolean isJack;
     private boolean isCross;
     private boolean hasBeenRotate;
+    //TEST
+    private BooleanProperty isRecto2;
 
     public District(Orientation orientation, Alibi character) {
         this.orientation = orientation;
@@ -23,11 +27,11 @@ public class District {
         return character;
     }
 
-    public void isJack () {
+    public void isJack() {
         isJack = true;
     }
 
-    public void isCross () {
+    public void isCross() {
         isCross = true;
     }
 
@@ -76,5 +80,17 @@ public class District {
 
     public void setOrientation(Orientation orientation) {
         this.orientation = orientation;
+    }
+
+    public BooleanProperty isIsRecto2() {
+        return isRecto2;
+    }
+
+    public BooleanProperty isRecto2Property() {
+        return isRecto2;
+    }
+
+    public void setIsRecto2(boolean isRecto2) {
+        this.isRecto2.set(isRecto2);
     }
 }
