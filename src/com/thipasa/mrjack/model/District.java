@@ -7,18 +7,14 @@ public class District {
     private final Alibi character;
     private boolean isRecto;
     private boolean isInSight;
-    private boolean isJack;
     private boolean isCross;
     private boolean hasBeenRotate;
-    //TEST
-    private BooleanProperty isRecto2;
 
     public District(Orientation orientation, Alibi character) {
         this.orientation = orientation;
         this.character = character;
         this.isRecto = true;
         this.isInSight = false;
-        this.isJack = false;
         this.isCross = false;
         this.hasBeenRotate = false;
     }
@@ -27,20 +23,20 @@ public class District {
         return character;
     }
 
-    public void isJack() {
-        isJack = true;
+    public boolean getIsCross() {
+        return isCross;
     }
 
     public void isCross() {
         isCross = true;
     }
 
-    public boolean getIsCross() {
-        return isCross;
-    }
-
     public Orientation getOrientation() {
         return orientation;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
     }
 
     public boolean isRecto() {
@@ -51,46 +47,24 @@ public class District {
         isRecto = false;
     }
 
-    public void setInSight(boolean inSight) {
-        isInSight = inSight;
-    }
-
     public boolean isInSight() {
         return isInSight;
     }
 
-    public boolean isHasBeenRotate() {
+    public void setInSight(boolean inSight) {
+        isInSight = inSight;
+    }
+
+    public boolean HasBeenRotate() {
         return hasBeenRotate;
     }
 
-    public void setHasBeenRotate() {
-        this.hasBeenRotate = true;
+    public void setHasBeenRotate(boolean hasBeenRotate) {
+        this.hasBeenRotate = hasBeenRotate;
     }
-
 
     public String toString(String[] toPrint, Orientation orientation) {
         int indexOfOrientation = java.util.Arrays.asList(Orientation.values()).indexOf(orientation);
-        String districtAffichage = toPrint[indexOfOrientation];
-        return districtAffichage;
-    }
-
-    public boolean getIsJack() {
-        return isJack;
-    }
-
-    public void setOrientation(Orientation orientation) {
-        this.orientation = orientation;
-    }
-
-    public BooleanProperty isIsRecto2() {
-        return isRecto2;
-    }
-
-    public BooleanProperty isRecto2Property() {
-        return isRecto2;
-    }
-
-    public void setIsRecto2(boolean isRecto2) {
-        this.isRecto2.set(isRecto2);
+        return toPrint[indexOfOrientation];
     }
 }
