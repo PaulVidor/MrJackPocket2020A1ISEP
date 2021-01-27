@@ -226,19 +226,21 @@ public class Board {
     }
 
     public void choiceMoveDetective() {
-        int userChoice = 1;
         boolean inputError = true;
         while (inputError) {
             try {
+                int userChoice = 1;
                 if (!investigatorPlays()) {
                     System.out.println("Voulez-vous deplacer 1 detective (1) ou laisser les 3 detectives a leur place (0)?");
                     userChoice = Game.scan.nextInt();
+                    inputError = false;
                     if (userChoice != 1 && userChoice != 0) {
                         System.out.println("L'entree doit etre egale a 1 ou 0\n");
                         Game.scan.nextLine();
+                        inputError = true;
                     }
                 }
-                if (userChoice != 0) {
+                if (userChoice == 1) {
                     System.out.println("Choisissez un detective a deplacer : Watson (1) | Sherlock (2) | Tobby (3)");
                     userChoice = Game.scan.nextInt();
                     listOfDetectives[userChoice - 1].setPosition((listOfDetectives[userChoice - 1].getPosition() + 1) % 12);
