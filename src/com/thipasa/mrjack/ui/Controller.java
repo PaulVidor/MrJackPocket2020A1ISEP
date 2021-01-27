@@ -100,7 +100,7 @@ public class Controller implements Initializable {
     boolean rotateButtonClicked;
 
     @FXML
-    private List<Button> labelList ;
+    private List<Button> labelList;
 
     int compteur = 0;
     int compteur2 = 0;
@@ -118,16 +118,16 @@ public class Controller implements Initializable {
             //System.out.println(compteur);
             //System.out.println(compteur2);
 
-            button.setRotate(convertRotate(game.getBoard().getDistrict(compteur,compteur2).getOrientation()));
+            button.setRotate(convertRotate(game.getBoard().getDistrict(compteur, compteur2).getOrientation()));
 
             //System.out.println(compteur2);
             //System.out.println(compteur);
-            if (compteur2 == 2 ){
-                this.compteur = compteur +1;
+            if (compteur2 == 2) {
+                this.compteur = compteur + 1;
                 this.compteur2 = 0;
 
-            }else{
-                this.compteur2 = compteur2 +1;
+            } else {
+                this.compteur2 = compteur2 + 1;
             }
         }
         //Initialisation du projet
@@ -155,7 +155,6 @@ public class Controller implements Initializable {
                 }
             }
         }*/
-
 
 
         //-------------------------------------------------------------
@@ -215,7 +214,6 @@ public class Controller implements Initializable {
         //-------------------------------------------------------------------------------------------------------
 
         //this.buttom0.setStyle("-fx-background: url('../Pictures/districts/common-verso.png');");
-
 
 
         // Nom des joueurs
@@ -302,24 +300,18 @@ public class Controller implements Initializable {
         //-------------------------------------------------------------------------------------------------------
 
 
-
-
     }
 
 
-
     //Convertisseur
-    public int convertRotate(Orientation sens){
-        if (sens == Orientation.WEST){
+    public int convertRotate(Orientation sens) {
+        if (sens == Orientation.WEST) {
             return (90);
-        }
-        else if (sens == Orientation.SOUTH){
+        } else if (sens == Orientation.SOUTH) {
             return (180);
-        }
-        else if (sens == Orientation.EAST){
+        } else if (sens == Orientation.EAST) {
             return (270);
-        }
-        else{
+        } else {
             return (0);
         }
     }
@@ -327,29 +319,29 @@ public class Controller implements Initializable {
     public void pushed(ActionEvent e) {
         //exécute cette méthode en appuyant sur le bouton
 
-        if ((Button)e.getSource() == buttonAct1){
+        if ((Button) e.getSource() == buttonAct1) {
             System.out.println("boutonAct1");
-            String mrJackPointsString = ""+ game.getBoard().getMrJackPlayer().getCountHourglass();
-            this.MrJackPoints.setText( mrJackPointsString );
+            String mrJackPointsString = "" + game.getBoard().getMrJackPlayer().getCountHourglass();
+            this.MrJackPoints.setText(mrJackPointsString);
 
             System.out.println(this.game.getBoard().getActionToken(0).toString());
-            if (game.getBoard().getActionToken(0).toString().equals("Piocherunalibi")){
-                if (this.isAlibisPrint){
-                    System.out.println("Alibis"+game.getBoard().getAlibiCardDrawn().getName());
-                    this.buttonAfficherAlibi.getStyleClass().remove("Alibis"+game.getBoard().getAlibiCardDrawn().getName());
+            if (game.getBoard().getActionToken(0).toString().equals("Piocherunalibi")) {
+                if (this.isAlibisPrint) {
+                    System.out.println("Alibis" + game.getBoard().getAlibiCardDrawn().getName());
+                    this.buttonAfficherAlibi.getStyleClass().remove("Alibis" + game.getBoard().getAlibiCardDrawn().getName());
                 }
                 //System.out.println(game.getBoard().alibiDraw());
 
                 game.getBoard().chooseActions(1);
-                this.buttonAfficherAlibi.getStyleClass().add("Alibis"+game.getBoard().getAlibiCardDrawn().getName());
+                this.buttonAfficherAlibi.getStyleClass().add("Alibis" + game.getBoard().getAlibiCardDrawn().getName());
                 //System.out.println(game.getBoard().alibiCardDrawed.getName());
                 this.isAlibisPrint = true;
 
                 this.buttonAct1.setDisable(true);
             }
         }
-        if((Button)e.getSource() == buttonAct3){
-            if(game.getBoard().getActionToken(2).toString().equals("Fairetournerunquartier1")){
+        if ((Button) e.getSource() == buttonAct3) {
+            if (game.getBoard().getActionToken(2).toString().equals("Fairetournerunquartier1")) {
 
                 rotateButtonClicked = true;
                 //System.out.println(game.getBoard().getDistrict(0,0).getOrientation());
@@ -360,9 +352,9 @@ public class Controller implements Initializable {
             }
         }
 
-        if((Button)e.getSource() == buttonAct4){
+        if ((Button) e.getSource() == buttonAct4) {
 
-            if(game.getBoard().getActionToken(2).toString().equals("Fairetournerunquartier1")){
+            if (game.getBoard().getActionToken(2).toString().equals("Fairetournerunquartier1")) {
                 this.buttonAct1.setDisable(true);
                 this.buttonAct2.setDisable(true);
                 this.buttonAct4.setDisable(true);
@@ -381,12 +373,12 @@ public class Controller implements Initializable {
 
         //MISE A JOUR District
         int l = 0;
-        for(int i = 0;i < 3;i++){
-            for(int j = 0;j<3;j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
 
-                if ((Button)e.getSource() == buttonAct3){
+                if ((Button) e.getSource() == buttonAct3) {
                     //System.out.println("position " + game.getBoard().getDistrict(i,j).getOrientation() );
-                    labelList.get(game.getBoard().getDistrictPosition()-1).setRotate(convertRotate(game.getBoard().getDistrict(i,j).getOrientation()));
+                    labelList.get(game.getBoard().getDistrictPosition() - 1).setRotate(convertRotate(game.getBoard().getDistrict(i, j).getOrientation()));
 
 
                 }
@@ -398,17 +390,18 @@ public class Controller implements Initializable {
                     labelList.get(l).getStyleClass().add("Verso");
 
                 }
-                l = l +1;
+                l = l + 1;
 
             }
 
         }
     }
-    public void send(){
+
+    public void send() {
         send.setOnAction(e -> System.out.println(textField.getText()));
     }
 
-    public void play(){
+    public void play() {
         game.play();
     }
 }

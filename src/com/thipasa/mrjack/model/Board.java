@@ -67,7 +67,7 @@ public class Board {
         this.ask1 = ask1;
     }
 
-    public ActionToken getActionToken(int i){
+    public ActionToken getActionToken(int i) {
         return this.listOfTokens[i];
     }
 
@@ -322,7 +322,7 @@ public class Board {
                     System.out.println("De combien de quarts de tour voulez-vous le faire tourner (sens horaire) ?");
                     int times = Game.scan.nextInt();
                     district.setOrientation(Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
-                    System.out.println("nouvelle orientation"+Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
+                    System.out.println("nouvelle orientation" + Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
                     district.setHasBeenRotate(true);
                     inputError = false;
                 } else {
@@ -615,7 +615,6 @@ public class Board {
     }
 
 
-
     //TEST
 
 
@@ -626,7 +625,6 @@ public class Board {
     public int getNumberOfDistrictVerso() {
         return numberOfDistrictVerso;
     }
-
 
 
 }

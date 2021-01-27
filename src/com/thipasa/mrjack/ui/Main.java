@@ -12,7 +12,6 @@ import java.io.File;
 public class Main extends Application {
 
 
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(new File("resources/sample.fxml").toURI().toURL());
@@ -27,8 +26,6 @@ public class Main extends Application {
         primaryStage.show();
 
 
-
-
     }
 
 
@@ -36,5 +33,6 @@ public class Main extends Application {
         launch(args);
 
     }
+
 }
 
