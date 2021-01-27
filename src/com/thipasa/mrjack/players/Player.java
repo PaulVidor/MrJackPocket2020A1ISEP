@@ -9,9 +9,9 @@ public abstract class Player {
     public int countHourglass;
     public String name;
 
-    public Player(ArrayList<Alibi> alibiCards, int countHourglass, String name) {
+    public Player(ArrayList<Alibi> alibiCards, String name) {
         this.alibiCards = alibiCards;
-        this.countHourglass = countHourglass;
+        this.countHourglass = 0;
         this.name = name;
     }
 
