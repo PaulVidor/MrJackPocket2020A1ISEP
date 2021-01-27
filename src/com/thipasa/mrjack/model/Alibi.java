@@ -12,8 +12,8 @@ public enum Alibi {
     BROWN("Lane", 1);
 
 
-    private String name;
-    private int hourglass;
+    private final String name;
+    private final int hourglass;
     private District district;
 
     Alibi(String name, int hourglass) {

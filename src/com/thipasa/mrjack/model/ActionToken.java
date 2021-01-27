@@ -8,8 +8,8 @@ public enum ActionToken {
 
     private boolean isHead;
     private boolean hasBeenUsed;
-    private String nameHead;
-    private String nameTails;
+    private final String nameHead;
+    private final String nameTails;
 
     ActionToken(String nameHead, String nameTails) {
         this.isHead = true;
@@ -23,7 +23,7 @@ public enum ActionToken {
     }
 
     public boolean isHasBeenUsed() {
-        return hasBeenUsed;
+        return !hasBeenUsed;
     }
 
     public void setHead(boolean head) {

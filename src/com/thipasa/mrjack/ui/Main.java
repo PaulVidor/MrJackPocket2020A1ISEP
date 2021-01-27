@@ -1,5 +1,6 @@
 package com.thipasa.mrjack.ui;
 
+import com.thipasa.mrjack.game.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +23,6 @@ public class Main extends Application {
         Scene Mainscene = new Scene(root, 1800, 900);
         Mainscene.getStylesheets().add("CSSButton.css");
 
-
         primaryStage.setScene(Mainscene);
         primaryStage.show();
 
@@ -34,6 +34,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 }
 

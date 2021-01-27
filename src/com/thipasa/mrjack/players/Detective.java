@@ -5,7 +5,7 @@ public enum Detective {
     SHERLOCK("Sherlock", 11),
     TOBBY("Tobby", 7);
 
-    private String name;
+    private final String name;
     private int position;
 
     Detective(String name, int position) {
