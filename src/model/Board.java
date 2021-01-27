@@ -44,7 +44,7 @@ public class Board {
         board = new District[3][3];
         listOfDetectives = Detective.values();
         listOfTokens = ActionToken.values();
-        districtToPrint = new String[] {"╦","╣","╩","╠","╬"};
+        districtToPrint = new String[]{"╦", "╣", "╩", "╠", "╬"};
         turnNumber = 1;
         numberOfActionsUsed = 0;
         numberOfDistrictVerso = 0;
@@ -60,13 +60,12 @@ public class Board {
 
     public void deckGenerate() {
         Alibi[] alibis = Alibi.values();
-        mrJackCharacter = Alibi.values()[(int) (Math.random()*9)];
+        mrJackCharacter = Alibi.values()[(int) (Math.random() * 9)];
         alibiCards.addAll(Arrays.asList(alibis));
         Collections.shuffle(alibiCards);
     }
 
     public void playersGenerate() {
-        Game.scan.nextLine(); //Règle un pb de scrolling
         System.out.println("Quel est le nom du joueur enqueteur ?");
         String userName = Game.scan.nextLine();
         investigatorPlayer = new InvestigatorPlayer(new ArrayList<>(), userName);
@@ -76,10 +75,10 @@ public class Board {
     }
 
     public void districtBoardGenerate() {
-        for (int i = 0; i<3; i++) {
-            for (int j = 0; j<3; j++) {
-                Orientation randomOrientation = Orientation.values()[(int) (Math.random()*4)];
-                board[i][j] = new District(randomOrientation, alibiCards.get(3*i+j));
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Orientation randomOrientation = Orientation.values()[(int) (Math.random() * 4)];
+                board[i][j] = new District(randomOrientation, alibiCards.get(3 * i + j));
                 if (board[i][j].getCharacter() == mrJackCharacter) {
                     mrJackDistrict = board[i][j];
                 }
@@ -99,7 +98,7 @@ public class Board {
 
     public boolean actionsAllUsed() {
         boolean endActions = true;
-        for (int i = 0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             if (ActionToken.values()[i].isHasBeenUsed()) {
                 endActions = false;
                 break;
@@ -117,8 +116,7 @@ public class Board {
                 if ((int) (Math.random() * 2) < 0.5) {
                     listOfTokens[j].setHead(false);
                 }
-            }
-            else {
+            } else {
                 listOfTokens[j].setHead(!listOfTokens[j].isHead());
             }
         }
@@ -177,7 +175,7 @@ public class Board {
                             if (listOfTokens[3].isHead()) {
                                 rotate();
                             } else {
-                                moveChosenDetective();
+                                choiceMoveDetective();
                             }
                             listOfTokens[3].setHasBeenUsed(true);
                             numberOfActionsUsed++;
@@ -187,12 +185,12 @@ public class Board {
                         break;
 
                     default:
-                        System.out.println("L'entee saisie est invalide, veuillez ressaisir votre demande\n");
+                        System.out.println("L'entree saisie est invalide, veuillez ressaisir votre demande\n");
                 }
                 inputError = false;
             } catch (InputMismatchException e) {
                 System.out.println("L'entree doit etre un entier\n");
-                inputError = false;
+                Game.scan.nextLine();
             }
         }
     }
@@ -200,19 +198,18 @@ public class Board {
     public void alibiDraw() {
         Alibi alibiCardDrawn;
         alibiCardDrawn = alibiCards.pop();
-        if(investigatorPlays()) {
+        if (investigatorPlays()) {
             System.out.println("L'alibi obtenu est : " + alibiCardDrawn.getName());
             investigatorPlayer.addToAlibiCards(alibiCardDrawn);
             investigatorPlayer.addToCountHourglass(alibiCardDrawn.getHourglass());
-            for (int i = 0; i<3; i++) {
-                for (int j = 0; j<3; j++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                     if (board[i][j].getCharacter() == alibiCardDrawn) {
                         board[i][j].setVerso();
                     }
                 }
             }
-        }
-        else {
+        } else {
             mrJackPlayer.addToAlibiCards(alibiCardDrawn);
             mrJackPlayer.addToCountHourglass(alibiCardDrawn.getHourglass());
             System.out.println("Mr. Jack a maintenant " + mrJackPlayer.getCountHourglass() + " sabliers en sa possession");
@@ -227,32 +224,29 @@ public class Board {
                 int distance = Game.scan.nextInt();
                 if (distance == 1 || distance == 2) {
                     detective.setPosition((detective.getPosition() + distance) % 12);
-                }
-                else {
-                    System.out.println("Le deplacement  n'est pas valide, veuillez reesayer");
+                } else {
+                    System.out.println("L'entree doit etre egale a 1 ou 2\n");
                     moveDetective(detective);
                 }
                 inputError = false;
             } catch (InputMismatchException e) {
                 System.out.println("L'entree doit etre un entier egal a 1 ou 2\n");
-                inputError = false;
-                moveDetective(detective);
+                Game.scan.nextLine();
             }
         }
     }
 
-    public void moveChosenDetective() {
-        int userChoice=1;
+    public void choiceMoveDetective() {
+        int userChoice = 1;
         boolean inputError = true;
-        while(inputError) {
+        while (inputError) {
             try {
                 if (!investigatorPlays()) {
                     System.out.println("Voulez-vous deplacer 1 detective (1) ou laisser les 3 detectives a leur place (0)?");
                     userChoice = Game.scan.nextInt();
-                    if(userChoice != 1 && userChoice !=0) {
-                        System.out.println("La demande n'est pas valide, veuillez reessayer");
-                        inputError = false;
-                        moveChosenDetective();
+                    if (userChoice != 1 && userChoice != 0) {
+                        System.out.println("L'entree doit etre egale a 1 ou 0\n");
+                        Game.scan.nextLine();
                     }
                 }
                 if (userChoice != 0) {
@@ -262,40 +256,37 @@ public class Board {
                     inputError = false;
                 }
             } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
-                System.out.println("L'entree doit etre un entier de 1 a 3\n");
-                inputError = false;
-                moveChosenDetective();
+                System.out.println("L'entree doit etre un entier compris entre 1 et 3\n");
+                Game.scan.nextLine();
             }
         }
     }
 
     public void rotate() {
         System.out.println("Quel quartier voulez-vous tourner ? Entrez un numero de 1 à 9, en suivant la correspondance");
-        Scanner userInput = new Scanner(System.in);
         int districtPosition;
         boolean inputError = true;
         while (inputError) {
             try {
-                districtPosition = userInput.nextInt();
+                districtPosition = Game.scan.nextInt();
                 int positionRow = (districtPosition - 1) / 3;
                 int positionColumn = (districtPosition - 1) % 3;
                 District district = board[positionRow][positionColumn];
                 if (!district.HasBeenRotate()) {
                     System.out.println("De combien de quarts de tour voulez-vous le faire tourner (sens horaire) ?");
-                    int times = userInput.nextInt();
+                    int times = Game.scan.nextInt();
                     district.setOrientation(Orientation.values()[(district.getOrientation().ordinal() + times) % 4]);
                     district.setHasBeenRotate(true);
-                    inputError=false;
+                    inputError = false;
                 } else {
-                    System.out.println("Ce quartier a deja ete tourne, choisissez en un autre\n");
-                    rotate();
+                    System.out.println("Le quartier " + districtPosition + " a deja ete tourne, choisissez en un autre\n");
                 }
             } catch (InputMismatchException e) {
-                userInput.nextLine();
                 System.out.println("L'entree doit etre un entier\n");
+                Game.scan.nextLine();
             } catch (ArrayIndexOutOfBoundsException e) {
-                userInput.nextLine();
-                System.out.println("L'entree doit etre comprise entre 1 et 9\n");
+                System.out.println("L'entree doit etre un entier compris entre 1 et 9\n");
+                Game.scan.nextLine();
             }
         }
     }
@@ -307,31 +298,28 @@ public class Board {
         4|5|6
         7|8|9
         */
-        Scanner userInput = new Scanner(System.in);
+
+        System.out.println("Quel quartier voulez-vous deplacer ?");
         boolean inputError = true;
-        while(inputError) {
+        while (inputError) {
             try {
-                System.out.println("Quel quartier voulez-vous deplacer ?");
-                int positionDistrict1 = userInput.nextInt();
+                int positionDistrict1 = Game.scan.nextInt();
                 System.out.println("Avec quel quartier voulez-vous l'echanger ?");
-                int positionDistrict2 = userInput.nextInt();
+                int positionDistrict2 = Game.scan.nextInt();
                 District swapDistrict;
 
-                int positionRow1 = (positionDistrict1 -1)/3;
-                int positionColumn1 = (positionDistrict1 -1)%3;
-                int positionRow2 = (positionDistrict2 -1)/3;
-                int positionColumn2 = (positionDistrict2 -1)%3;
+                int positionRow1 = (positionDistrict1 - 1) / 3;
+                int positionColumn1 = (positionDistrict1 - 1) % 3;
+                int positionRow2 = (positionDistrict2 - 1) / 3;
+                int positionColumn2 = (positionDistrict2 - 1) % 3;
 
                 swapDistrict = board[positionRow2][positionColumn2];
                 board[positionRow2][positionColumn2] = board[positionRow1][positionColumn1];
                 board[positionRow1][positionColumn1] = swapDistrict;
                 inputError = false;
-            } catch (InputMismatchException e) {
-                userInput.nextLine();
-                System.out.println("L'entree doit etre un entier\n");
-            } catch (ArrayIndexOutOfBoundsException e) {
-                userInput.nextLine();
-                System.out.println("L'entree doit etre comprise entre 1 et 9\n");
+            } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("L'entree doit etre un entier compris entre 1 et 9\n");
+                Game.scan.nextLine();
             }
         }
     }
@@ -341,7 +329,7 @@ public class Board {
 
     public void visibleCharacters() {
         int detectivePosition;
-        for (int j=0; j<3; j++) {
+        for (int j = 0; j < 3; j++) {
             detectivePosition = listOfDetectives[j].getPosition();
             switch (detectivePosition) {
                 case 0:
@@ -353,8 +341,7 @@ public class Board {
                             if (board[i][detectivePosition].getOrientation() == Orientation.SOUTH) {
                                 break;
                             }
-                        }
-                        else {
+                        } else {
                             break;
                         }
                     }
@@ -370,8 +357,7 @@ public class Board {
                             if (board[i][correspondColumn].getOrientation() == Orientation.NORTH) {
                                 break;
                             }
-                        }
-                        else {
+                        } else {
                             break;
                         }
                     }
@@ -387,8 +373,7 @@ public class Board {
                             if (board[correspondRowRight][i].getOrientation() == Orientation.WEST) {
                                 break;
                             }
-                        }
-                        else {
+                        } else {
                             break;
                         }
                     }
@@ -404,8 +389,7 @@ public class Board {
                             if (board[correspondRowLeft][i].getOrientation() == Orientation.EAST) {
                                 break;
                             }
-                        }
-                        else {
+                        } else {
                             break;
                         }
                     }
@@ -424,13 +408,12 @@ public class Board {
                     if (!board[i][j].isInSight()) {
                         board[i][j].setVerso();
                     }
-                }
-                else {
+                } else {
                     if (board[i][j].isInSight()) {
                         board[i][j].setVerso();
                     }
                 }
-                if(!board[i][j].isRecto()) {
+                if (!board[i][j].isRecto()) {
                     numberOfDistrictVerso++;
                 }
             }
@@ -451,16 +434,13 @@ public class Board {
             if (investigatorPlayer.isHasReachObjective() == mrJackPlayer.isHasReachObjective() && investigatorPlayer.isHasReachObjective()) {
                 if (mrJackDistrict.isInSight()) {
                     winner = investigatorPlayer;
-                }
-                else {
+                } else {
                     chaseMode = true;
                     hasPlayersReachObjectives();
                 }
             }
-        }
-
-        else {
-            if(turnNumber == 8) {
+        } else {
+            if (turnNumber == 8) {
                 winner = mrJackPlayer;
             }
             if (mrJackDistrict.isInSight() && turnNumber <= 8) {
@@ -478,16 +458,16 @@ public class Board {
         hasPlayersReachObjectives();
         endTurnToPrint();
         turnNumber++;
-        numberOfActionsUsed=0;
-        numberOfDistrictVerso=0;
+        numberOfActionsUsed = 0;
+        numberOfDistrictVerso = 0;
         resetDistricts();
         changeHand();
         shuffleTokens();
     }
 
     public void resetDistricts() {
-        for (int i = 0; i<3; i++) {
-            for (int j = 0; j<3; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 board[i][j].setInSight(false);
                 board[i][j].setHasBeenRotate(false);
             }
@@ -495,16 +475,15 @@ public class Board {
     }
 
     public void playerAddToCountHourglass() {
-        if(mrJackDistrict.isInSight()) {
+        if (mrJackDistrict.isInSight()) {
             investigatorPlayer.addToCountHourglass(1);
-        }
-        else {
+        } else {
             mrJackPlayer.addToCountHourglass(1);
         }
     }
 
     public boolean isEndGame() {
-        return winner!=null;
+        return winner != null;
     }
 
     public void changeHand() {
@@ -520,34 +499,33 @@ public class Board {
     public void gameToPrint() {
         System.out.println("\nVoici le plateau de jeu : ");
         System.out.println("     1      2      3");
-        for (int i = 0; i<3; i++) {
-            System.out.print(12-i + " ");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(12 - i + " ");
             for (int j = 0; j < 3; j++) {
-                if(board[i][j].getIsCross() && !board[i][j].isRecto()) {
+                if (board[i][j].getIsCross() && !board[i][j].isRecto()) {
                     board[i][j].setOrientation(Orientation.CROSS);
                 }
                 System.out.print(board[i][j].toString(districtToPrint, board[i][j].getOrientation()));
                 if (board[i][j].isRecto()) {
                     System.out.print("(" + board[i][j].getCharacter().toString().charAt(0)
                             + board[i][j].getCharacter().toString().charAt(1) + board[i][j].getCharacter().toString().charAt(2) + ") ");
-                }
-                else {
+                } else {
                     System.out.print("      ");
                 }
             }
-            System.out.println(i+4);
+            System.out.println(i + 4);
         }
         System.out.println("     9      8      7");
         System.out.print("\nLes detectives sont postionnes de la maniere suivante :\n- ");
-        for (int i=0; i<3; i++) {
-            System.out.print(Detective.values()[i].getName() + " : " + (Detective.values()[i].getPosition()+1) + " - ");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(Detective.values()[i].getName() + " : " + (Detective.values()[i].getPosition() + 1) + " - ");
         }
 
-        if(actionsAllUsed()) {
+        if (actionsAllUsed()) {
             System.out.println("\n\nLes actions disponibles sont les suivantes : ");
-            for (int i = 0; i<4; i++ ) {
+            for (int i = 0; i < 4; i++) {
                 if (listOfTokens[i].isHasBeenUsed()) {
-                    System.out.println(listOfTokens[i].toString() + " (Tapez " + (i+1) + ") ");
+                    System.out.println(listOfTokens[i].toString() + " (Tapez " + (i + 1) + ") ");
                 }
             }
             System.out.println();
@@ -560,12 +538,11 @@ public class Board {
         if (!chaseMode) {
             System.out.println("\n\nAttention ! Mr. Jack possede " + mrJackPlayer.getCountHourglass() + " sablier(s) !");
             System.out.println("\nMr. Jack " + (mrJackDistrict.isInSight() ? "est visible" : "n'est pas visible") +
-                " pour les detectives...\nLes quartiers " + (mrJackDistrict.isInSight() ? "caches" : "en vue") + " sont " +
-                "tournes face verso!\n");
+                    " pour les detectives...\nLes quartiers " + (mrJackDistrict.isInSight() ? "caches" : "en vue") + " sont " +
+                    "tournes face verso!\n");
             System.out.println(numberOfDistrictVerso + " quartiers sont a present face verso!");
             System.out.println("\n\nLe tour est fini, nous passons au tour suivant !");
-        }
-        else {
+        } else {
             System.out.println("\n\nLes deux joueurs ont atteint leurs objectifs ! L'enqueteur et mr. Jack sont dans une course poursuite !");
         }
         if (winner != null) {

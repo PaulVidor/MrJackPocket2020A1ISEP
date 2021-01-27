@@ -10,7 +10,7 @@ public abstract class Player {
     public String name;
     public boolean hasReachObjective;
 
-public Player(ArrayList<Alibi> alibiCards, String name) {
+    public Player(ArrayList<Alibi> alibiCards, String name) {
         this.alibiCards = alibiCards;
         this.countHourglass = 0;
         this.name = name;
@@ -45,5 +45,3 @@ public Player(ArrayList<Alibi> alibiCards, String name) {
         hasReachObjective = true;
     }
 }
-
-

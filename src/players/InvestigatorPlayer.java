@@ -4,7 +4,7 @@ import model.Alibi;
 
 import java.util.ArrayList;
 
-public class InvestigatorPlayer extends Player{
+public class InvestigatorPlayer extends Player {
 
     public InvestigatorPlayer(ArrayList<Alibi> alibiCards, String name) {
         super(alibiCards, name);

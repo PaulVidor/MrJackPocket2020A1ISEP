@@ -37,8 +37,7 @@ public enum ActionToken {
     public String toString() {
         if (isHead) {
             return nameHead;
-        }
-        else {
+        } else {
             return nameTails;
         }
     }

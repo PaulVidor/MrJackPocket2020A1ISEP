@@ -25,7 +25,7 @@ public class District {
         return isCross;
     }
 
-    public void isCross () {
+    public void isCross() {
         isCross = true;
     }
 
@@ -58,7 +58,7 @@ public class District {
     }
 
     public void setHasBeenRotate(boolean hasBeenRotate) {
-        this.hasBeenRotate=hasBeenRotate;
+        this.hasBeenRotate = hasBeenRotate;
     }
 
     public String toString(String[] toPrint, Orientation orientation) {

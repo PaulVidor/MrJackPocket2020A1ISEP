@@ -14,7 +14,7 @@ public class MrJackPlayer extends Player {
 
     public String toString() {
         return mrJackCharacter.getName() + " (" + mrJackCharacter.toString().charAt(0)
-        + mrJackCharacter.toString().charAt(1) + mrJackCharacter.toString().charAt(2) + ")";
+                + mrJackCharacter.toString().charAt(1) + mrJackCharacter.toString().charAt(2) + ")";
     }
 
     @Override
@@ -37,4 +37,3 @@ public class MrJackPlayer extends Player {
         super.setHasReachObjective();
     }
 }
-
