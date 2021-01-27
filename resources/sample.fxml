@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.util.ArrayList?>
-<GridPane gridLinesVisible="true" prefHeight="900.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thipasa.mrjack.ui.Controller">
+<GridPane gridLinesVisible="true" prefHeight="900.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/8.0.261" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thipasa.mrjack.ui.Controller">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1249.0" minWidth="10.0" prefWidth="1249.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="895.0" minWidth="10.0" prefWidth="551.0" />
@@ -74,7 +74,7 @@
                 <TextArea fx:id="textArea" layoutX="781.0" layoutY="769.0" prefHeight="70.0" prefWidth="467.0" text="&#10;" />
                 <Label fx:id="label1" layoutX="830.0" layoutY="56.0" prefHeight="50.0" prefWidth="198.0" />
                 <Label fx:id="label2" layoutX="1028.0" layoutY="56.0" prefHeight="50.0" prefWidth="164.0" />
-                <Button fx:id="playGame" layoutX="1133.0" layoutY="30.0" mnemonicParsing="false" onAction="#play" text="version console" />
+                <Button fx:id="playGame" layoutX="1069.0" layoutY="30.0" mnemonicParsing="false" onAction="#play" prefHeight="26.0" prefWidth="134.0" text="version console" />
             </children>
         </AnchorPane>
         <GridPane gridLinesVisible="true" maxHeight="780.0" maxWidth="780.0" minHeight="780.0" minWidth="780.0" prefHeight="780.0" prefWidth="780.0">
