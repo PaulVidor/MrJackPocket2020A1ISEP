@@ -9,16 +9,6 @@ import java.util.*;
 
 public class Board {
 
-    /*
-
-         0 1 2
-     11  .|.|.  3       1|2|3
-     10  .|.|.  4       4|5|6
-      9  .|.|.  5       7|8|9
-         8 7 6
-
-    */
-
     private Stack<Alibi> alibiCards;
     private District[][] board;
     private Detective[] listOfDetectives;
