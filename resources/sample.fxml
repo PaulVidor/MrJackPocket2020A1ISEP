@@ -127,7 +127,6 @@
                         <fx:reference source="button07" />
                         <fx:reference source="button08" />
                         <fx:reference source="button09" />
-
                     </ArrayList>
                 </fx:define>
             </children>
