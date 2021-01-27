@@ -11,7 +11,7 @@ public class InvestigatorPlayer extends Player {
     }
 
     @Override
-    public ArrayList getAlibiCards() {
+    public ArrayList<Alibi> getAlibiCards() {
         return super.getAlibiCards();
     }
 
@@ -31,7 +31,18 @@ public class InvestigatorPlayer extends Player {
     }
 
     @Override
-    public boolean hasReachObjective() {
-        return super.hasReachObjective();
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public boolean isHasReachObjective() {
+        return super.isHasReachObjective();
+    }
+
+    @Override
+    public void setHasReachObjective() {
+        super.setHasReachObjective();
     }
 }
+
