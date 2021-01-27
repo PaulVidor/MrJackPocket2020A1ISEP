@@ -8,7 +8,6 @@ import players.Player;
 import java.util.*;
 
 public class Board {
-
     private Stack<Alibi> alibiCards;
     private District[][] board;
     private Detective[] listOfDetectives;
