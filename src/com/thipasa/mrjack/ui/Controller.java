@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.paint.CycleMethod;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -72,8 +73,6 @@ public class Controller implements Initializable {
 
     @FXML
     public Button buttonAfficherAlibi;
-
-    Board myBoard = new Board();
     //-----------------------------------------
     @FXML
     public Button buttonAfficher; //boutonTours
@@ -98,6 +97,8 @@ public class Controller implements Initializable {
     public Label label2;
     public Button playGame;
     Boolean isAlibisPrint = false;
+    boolean rotateButtonClicked;
+
     @FXML
     private List<Button> labelList ;
 
@@ -114,6 +115,9 @@ public class Controller implements Initializable {
             //System.out.println(button.getId());
             button.setDisable(false);
             button.getStyleClass().add(game.getBoard().getDistrict(compteur, compteur2).getCharacter().getName());
+            //System.out.println(compteur);
+            //System.out.println(compteur2);
+
             button.setRotate(convertRotate(game.getBoard().getDistrict(compteur,compteur2).getOrientation()));
 
             //System.out.println(compteur2);
@@ -324,31 +328,72 @@ public class Controller implements Initializable {
         //exécute cette méthode en appuyant sur le bouton
 
         if ((Button)e.getSource() == buttonAct1){
+            System.out.println("boutonAct1");
             String mrJackPointsString = ""+ game.getBoard().getMrJackPlayer().getCountHourglass();
             this.MrJackPoints.setText( mrJackPointsString );
 
-            //System.out.println(this.game.getBoard().getActionToken(0).toString());
+            System.out.println(this.game.getBoard().getActionToken(0).toString());
             if (game.getBoard().getActionToken(0).toString().equals("Piocherunalibi")){
                 if (this.isAlibisPrint){
-                this.buttonAfficherAlibi.getStyleClass().remove("Alibis"+game.getBoard().alibiCardDrawed.getName());
+                    System.out.println("Alibis"+game.getBoard().getAlibiCardDrawn().getName());
+                this.buttonAfficherAlibi.getStyleClass().remove("Alibis"+game.getBoard().getAlibiCardDrawn().getName());
                 }
                 //System.out.println(game.getBoard().alibiDraw());
-                game.getBoard().alibiDraw();
-                this.buttonAfficherAlibi.getStyleClass().add("Alibis"+game.getBoard().alibiCardDrawed.getName());
+
+                game.getBoard().chooseActions(1);
+                this.buttonAfficherAlibi.getStyleClass().add("Alibis"+game.getBoard().getAlibiCardDrawn().getName());
                 //System.out.println(game.getBoard().alibiCardDrawed.getName());
                 this.isAlibisPrint = true;
+
+                this.buttonAct1.setDisable(true);
+            }
+        }
+        if((Button)e.getSource() == buttonAct3){
+            if(game.getBoard().getActionToken(2).toString().equals("Fairetournerunquartier1")){
+
+                rotateButtonClicked = true;
+                System.out.println(game.getBoard().getDistrict(0,0).getOrientation());
+                game.getBoard().chooseActions(3);
+                System.out.println(game.getBoard().getDistrict(0,0).getOrientation());
+
+
+            }
+        }
+
+        if((Button)e.getSource() == buttonAct4){
+
+            if(game.getBoard().getActionToken(2).toString().equals("Fairetournerunquartier1")){
+                this.buttonAct1.setDisable(true);
+                this.buttonAct2.setDisable(true);
+                this.buttonAct4.setDisable(true);
+                this.buttonAct3.setDisable(true);
+
+                game.getBoard().chooseActions(3);
+
+                this.buttonAct1.setDisable(false);
+                this.buttonAct2.setDisable(false);
+                this.buttonAct4.setDisable(false);
+
+
             }
 
-
         }
+
+        //MISE A JOUR District
         int l = 0;
         for(int i = 0;i < 3;i++){
             for(int j = 0;j<3;j++) {
 
-                System.out.println(!game.getBoard().getDistrict(i, j).isRecto());
+                if ((Button)e.getSource() == buttonAct3){
+                    System.out.println("position " + game.getBoard().getDistrict(i,j).getOrientation() );
+                    labelList.get(game.getBoard().getDistrictPosition()-1).setRotate(convertRotate(game.getBoard().getDistrict(i,j).getOrientation()));
+
+
+                }
+
                 if (!game.getBoard().getDistrict(i, j).isRecto()) {
 
-                    System.out.println(game.getBoard().getDistrict(i,j).getCharacter().getName()+ " est retourné");
+                    System.out.println(game.getBoard().getDistrict(i,j).getCharacter().getName()+ " is returned");
                     labelList.get(l).getStyleClass().remove(game.getBoard().getDistrict(i, j).getCharacter().getName());
                     labelList.get(l).getStyleClass().add("Verso");
 
