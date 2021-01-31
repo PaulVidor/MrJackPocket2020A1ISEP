@@ -44,5 +44,4 @@ public class InvestigatorPlayer extends Player {
     public void setHasReachObjective() {
         super.setHasReachObjective();
     }
-
 }
